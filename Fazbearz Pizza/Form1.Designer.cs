@@ -31,7 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.WindowState = FormWindowState.Maximized;
+            this.Text = "Fazbearz Pizza";
+            this.Name = "Form1";
+            
         }
 
         #endregion
