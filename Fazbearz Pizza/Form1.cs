@@ -23,7 +23,7 @@ namespace Fazbearz_Pizza
 
         private void ExitBtn_Click(object sender, EventArgs e)
         {
-
+            System.Environment.Exit(0);
         }
     }
 }
