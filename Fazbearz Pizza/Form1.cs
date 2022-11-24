@@ -5,23 +5,23 @@ namespace Fazbearz_Pizza
         public Form1()
         {
             InitializeComponent();
-            this.button1.Click += new EventHandler(button1_Click);
-            this.button2.Click += new EventHandler(button2_Click);
+            this.LoginBtn.Click += new EventHandler(LoginBtn_Click);
+            this.ExitBtn.Click += new EventHandler(ExitBtn_Click);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             this.Cursor = Cursors.Default;
-            button1.Cursor = Cursors.Hand;
-            button2.Cursor = Cursors.Hand;
+            LoginBtn.Cursor = Cursors.Hand;
+            ExitBtn.Cursor = Cursors.Hand;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void LoginBtn_Click(object sender, EventArgs e)
         {
             
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void ExitBtn_Click(object sender, EventArgs e)
         {
 
         }
