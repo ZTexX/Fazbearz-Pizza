@@ -88,6 +88,28 @@
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.PaymentPanel = new System.Windows.Forms.Panel();
+            this.CheckInfoPanel = new System.Windows.Forms.Panel();
+            this.RouteNumTxtBox = new System.Windows.Forms.TextBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.AccountNumTxtBox = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.CardInfoPanel = new System.Windows.Forms.Panel();
+            this.CardNumTxtBox = new System.Windows.Forms.MaskedTextBox();
+            this.ExpiryDateTxtBox = new System.Windows.Forms.MaskedTextBox();
+            this.VisaOrMastercard = new System.Windows.Forms.CheckedListBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.CardNameTxtBox = new System.Windows.Forms.TextBox();
+            this.CVVTxtBox = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.CashInfoPanel = new System.Windows.Forms.Panel();
+            this.cashlbl = new System.Windows.Forms.Label();
+            this.PaymentType = new System.Windows.Forms.CheckedListBox();
+            this.DoneBtn = new System.Windows.Forms.Button();
+            this.DeliveryOrPickup = new System.Windows.Forms.CheckedListBox();
+            this.SignatureTxtBox = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
             this.BackBtn3 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
@@ -107,6 +129,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.PaymentPanel.SuspendLayout();
+            this.CheckInfoPanel.SuspendLayout();
+            this.CardInfoPanel.SuspendLayout();
+            this.CashInfoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.SuspendLayout();
@@ -481,6 +506,7 @@
             "WI",
             "WY"});
             this.SelectState.Location = new System.Drawing.Point(824, 439);
+            this.SelectState.MaxLength = 2;
             this.SelectState.Name = "SelectState";
             this.SelectState.Size = new System.Drawing.Size(179, 23);
             this.SelectState.TabIndex = 20;
@@ -533,11 +559,13 @@
             // CreateZIP
             // 
             this.CreateZIP.Location = new System.Drawing.Point(1009, 439);
+            this.CreateZIP.MaxLength = 5;
             this.CreateZIP.Name = "CreateZIP";
             this.CreateZIP.Size = new System.Drawing.Size(174, 23);
             this.CreateZIP.TabIndex = 15;
             this.CreateZIP.Text = "ZIP";
             this.CreateZIP.Enter += new System.EventHandler(this.CreateZIP_Enter);
+            this.CreateZIP.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CreateZIP_KeyPress);
             this.CreateZIP.Leave += new System.EventHandler(this.CreateZIP_Leave);
             // 
             // CreateCity
@@ -991,6 +1019,14 @@
             // PaymentPanel
             // 
             this.PaymentPanel.BackColor = System.Drawing.Color.White;
+            this.PaymentPanel.Controls.Add(this.CheckInfoPanel);
+            this.PaymentPanel.Controls.Add(this.CardInfoPanel);
+            this.PaymentPanel.Controls.Add(this.CashInfoPanel);
+            this.PaymentPanel.Controls.Add(this.PaymentType);
+            this.PaymentPanel.Controls.Add(this.DoneBtn);
+            this.PaymentPanel.Controls.Add(this.DeliveryOrPickup);
+            this.PaymentPanel.Controls.Add(this.SignatureTxtBox);
+            this.PaymentPanel.Controls.Add(this.label16);
             this.PaymentPanel.Controls.Add(this.BackBtn3);
             this.PaymentPanel.Controls.Add(this.label15);
             this.PaymentPanel.Controls.Add(this.pictureBox8);
@@ -1001,6 +1037,264 @@
             this.PaymentPanel.Name = "PaymentPanel";
             this.PaymentPanel.Size = new System.Drawing.Size(1904, 1041);
             this.PaymentPanel.TabIndex = 26;
+            this.PaymentPanel.Click += new System.EventHandler(this.PaymentPanel_Click);
+            // 
+            // CheckInfoPanel
+            // 
+            this.CheckInfoPanel.Controls.Add(this.RouteNumTxtBox);
+            this.CheckInfoPanel.Controls.Add(this.label22);
+            this.CheckInfoPanel.Controls.Add(this.AccountNumTxtBox);
+            this.CheckInfoPanel.Controls.Add(this.label21);
+            this.CheckInfoPanel.Location = new System.Drawing.Point(690, 339);
+            this.CheckInfoPanel.Name = "CheckInfoPanel";
+            this.CheckInfoPanel.Size = new System.Drawing.Size(467, 142);
+            this.CheckInfoPanel.TabIndex = 35;
+            this.CheckInfoPanel.Visible = false;
+            // 
+            // RouteNumTxtBox
+            // 
+            this.RouteNumTxtBox.Location = new System.Drawing.Point(222, 86);
+            this.RouteNumTxtBox.MaxLength = 9;
+            this.RouteNumTxtBox.Name = "RouteNumTxtBox";
+            this.RouteNumTxtBox.Size = new System.Drawing.Size(226, 23);
+            this.RouteNumTxtBox.TabIndex = 36;
+            this.RouteNumTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RouteNumTxtBox_KeyPress);
+            // 
+            // label22
+            // 
+            this.label22.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label22.Location = new System.Drawing.Point(22, 76);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(198, 36);
+            this.label22.TabIndex = 35;
+            this.label22.Text = "Routing Number:";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // AccountNumTxtBox
+            // 
+            this.AccountNumTxtBox.Location = new System.Drawing.Point(222, 29);
+            this.AccountNumTxtBox.MaxLength = 17;
+            this.AccountNumTxtBox.Name = "AccountNumTxtBox";
+            this.AccountNumTxtBox.Size = new System.Drawing.Size(226, 23);
+            this.AccountNumTxtBox.TabIndex = 34;
+            this.AccountNumTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.AccountNumTxtBox_KeyPress);
+            // 
+            // label21
+            // 
+            this.label21.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label21.Location = new System.Drawing.Point(22, 19);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(198, 36);
+            this.label21.TabIndex = 33;
+            this.label21.Text = "Account Number:";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // CardInfoPanel
+            // 
+            this.CardInfoPanel.Controls.Add(this.CardNumTxtBox);
+            this.CardInfoPanel.Controls.Add(this.ExpiryDateTxtBox);
+            this.CardInfoPanel.Controls.Add(this.VisaOrMastercard);
+            this.CardInfoPanel.Controls.Add(this.label17);
+            this.CardInfoPanel.Controls.Add(this.CardNameTxtBox);
+            this.CardInfoPanel.Controls.Add(this.CVVTxtBox);
+            this.CardInfoPanel.Controls.Add(this.label18);
+            this.CardInfoPanel.Controls.Add(this.label20);
+            this.CardInfoPanel.Controls.Add(this.label19);
+            this.CardInfoPanel.Location = new System.Drawing.Point(623, 339);
+            this.CardInfoPanel.Name = "CardInfoPanel";
+            this.CardInfoPanel.Size = new System.Drawing.Size(595, 142);
+            this.CardInfoPanel.TabIndex = 34;
+            this.CardInfoPanel.Visible = false;
+            // 
+            // CardNumTxtBox
+            // 
+            this.CardNumTxtBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CardNumTxtBox.Location = new System.Drawing.Point(322, 8);
+            this.CardNumTxtBox.Mask = "0000 0000 0000 0000";
+            this.CardNumTxtBox.Name = "CardNumTxtBox";
+            this.CardNumTxtBox.Size = new System.Drawing.Size(217, 25);
+            this.CardNumTxtBox.TabIndex = 38;
+            this.CardNumTxtBox.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // ExpiryDateTxtBox
+            // 
+            this.ExpiryDateTxtBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ExpiryDateTxtBox.Location = new System.Drawing.Point(293, 76);
+            this.ExpiryDateTxtBox.Mask = "00/0000";
+            this.ExpiryDateTxtBox.Name = "ExpiryDateTxtBox";
+            this.ExpiryDateTxtBox.Size = new System.Drawing.Size(217, 25);
+            this.ExpiryDateTxtBox.TabIndex = 37;
+            this.ExpiryDateTxtBox.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
+            // 
+            // VisaOrMastercard
+            // 
+            this.VisaOrMastercard.CheckOnClick = true;
+            this.VisaOrMastercard.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.VisaOrMastercard.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.VisaOrMastercard.FormattingEnabled = true;
+            this.VisaOrMastercard.Items.AddRange(new object[] {
+            "Visa",
+            "Mastercard"});
+            this.VisaOrMastercard.Location = new System.Drawing.Point(15, 40);
+            this.VisaOrMastercard.Name = "VisaOrMastercard";
+            this.VisaOrMastercard.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.VisaOrMastercard.Size = new System.Drawing.Size(133, 60);
+            this.VisaOrMastercard.TabIndex = 24;
+            this.VisaOrMastercard.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.VisaOrMastercard_ItemCheck);
+            this.VisaOrMastercard.Click += new System.EventHandler(this.VisaOrMastercard_Click);
+            // 
+            // label17
+            // 
+            this.label17.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label17.Location = new System.Drawing.Point(154, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(169, 36);
+            this.label17.TabIndex = 25;
+            this.label17.Text = "Card Number:";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // CardNameTxtBox
+            // 
+            this.CardNameTxtBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CardNameTxtBox.Location = new System.Drawing.Point(366, 46);
+            this.CardNameTxtBox.Name = "CardNameTxtBox";
+            this.CardNameTxtBox.Size = new System.Drawing.Size(217, 25);
+            this.CardNameTxtBox.TabIndex = 28;
+            // 
+            // CVVTxtBox
+            // 
+            this.CVVTxtBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.CVVTxtBox.Location = new System.Drawing.Point(220, 109);
+            this.CVVTxtBox.MaxLength = 3;
+            this.CVVTxtBox.Name = "CVVTxtBox";
+            this.CVVTxtBox.Size = new System.Drawing.Size(217, 25);
+            this.CVVTxtBox.TabIndex = 31;
+            this.CVVTxtBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CVVTxtBox_KeyPress);
+            // 
+            // label18
+            // 
+            this.label18.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label18.Location = new System.Drawing.Point(154, 36);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(212, 36);
+            this.label18.TabIndex = 27;
+            this.label18.Text = "Cardholder Name:";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label20
+            // 
+            this.label20.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label20.Location = new System.Drawing.Point(154, 103);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(71, 36);
+            this.label20.TabIndex = 30;
+            this.label20.Text = "CVV:";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label19
+            // 
+            this.label19.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label19.Location = new System.Drawing.Point(154, 67);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(145, 36);
+            this.label19.TabIndex = 29;
+            this.label19.Text = "Expiry Date:";
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // CashInfoPanel
+            // 
+            this.CashInfoPanel.Controls.Add(this.cashlbl);
+            this.CashInfoPanel.Location = new System.Drawing.Point(690, 339);
+            this.CashInfoPanel.Name = "CashInfoPanel";
+            this.CashInfoPanel.Size = new System.Drawing.Size(467, 142);
+            this.CashInfoPanel.TabIndex = 36;
+            this.CashInfoPanel.Visible = false;
+            // 
+            // cashlbl
+            // 
+            this.cashlbl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cashlbl.Font = new System.Drawing.Font("Segoe UI Semibold", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.cashlbl.ForeColor = System.Drawing.Color.IndianRed;
+            this.cashlbl.Location = new System.Drawing.Point(0, 0);
+            this.cashlbl.Name = "cashlbl";
+            this.cashlbl.Size = new System.Drawing.Size(467, 142);
+            this.cashlbl.TabIndex = 0;
+            this.cashlbl.Text = "Cash must be paid in person either at the restaurant location or when delivered";
+            this.cashlbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // PaymentType
+            // 
+            this.PaymentType.CheckOnClick = true;
+            this.PaymentType.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.PaymentType.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.PaymentType.FormattingEnabled = true;
+            this.PaymentType.Items.AddRange(new object[] {
+            "Card",
+            "Check",
+            "Cash"});
+            this.PaymentType.Location = new System.Drawing.Point(860, 229);
+            this.PaymentType.Name = "PaymentType";
+            this.PaymentType.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.PaymentType.Size = new System.Drawing.Size(133, 88);
+            this.PaymentType.TabIndex = 23;
+            this.PaymentType.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.PaymentType_ItemCheck);
+            this.PaymentType.Click += new System.EventHandler(this.PaymentType_Click);
+            // 
+            // DoneBtn
+            // 
+            this.DoneBtn.BackgroundImage = global::Fazbearz_Pizza.Properties.Resources.Button;
+            this.DoneBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.DoneBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DoneBtn.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.DoneBtn.FlatAppearance.BorderSize = 0;
+            this.DoneBtn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.DoneBtn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.DoneBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DoneBtn.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.DoneBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.DoneBtn.Location = new System.Drawing.Point(909, 699);
+            this.DoneBtn.Margin = new System.Windows.Forms.Padding(0);
+            this.DoneBtn.Name = "DoneBtn";
+            this.DoneBtn.Size = new System.Drawing.Size(169, 72);
+            this.DoneBtn.TabIndex = 22;
+            this.DoneBtn.Text = "Done";
+            this.DoneBtn.UseVisualStyleBackColor = true;
+            this.DoneBtn.Click += new System.EventHandler(this.DoneBtn_Click);
+            // 
+            // DeliveryOrPickup
+            // 
+            this.DeliveryOrPickup.CheckOnClick = true;
+            this.DeliveryOrPickup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DeliveryOrPickup.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.DeliveryOrPickup.FormattingEnabled = true;
+            this.DeliveryOrPickup.Items.AddRange(new object[] {
+            "Delivery",
+            "Pickup"});
+            this.DeliveryOrPickup.Location = new System.Drawing.Point(977, 590);
+            this.DeliveryOrPickup.Name = "DeliveryOrPickup";
+            this.DeliveryOrPickup.SelectionMode = System.Windows.Forms.SelectionMode.None;
+            this.DeliveryOrPickup.Size = new System.Drawing.Size(101, 60);
+            this.DeliveryOrPickup.TabIndex = 20;
+            this.DeliveryOrPickup.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.DeliveryOrPickup_ItemCheck);
+            this.DeliveryOrPickup.Click += new System.EventHandler(this.DeliveryOrPickup_Click);
+            // 
+            // SignatureTxtBox
+            // 
+            this.SignatureTxtBox.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SignatureTxtBox.Location = new System.Drawing.Point(861, 656);
+            this.SignatureTxtBox.Name = "SignatureTxtBox";
+            this.SignatureTxtBox.Size = new System.Drawing.Size(217, 25);
+            this.SignatureTxtBox.TabIndex = 19;
+            // 
+            // label16
+            // 
+            this.label16.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label16.Location = new System.Drawing.Point(745, 646);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(121, 36);
+            this.label16.TabIndex = 18;
+            this.label16.Text = "Signature:";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BackBtn3
             // 
@@ -1071,11 +1365,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.PaymentPanel);
-            this.Controls.Add(this.OrderMenuPanel);
+            this.Controls.Add(this.MainMenuPanel);
             this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.CreateAccountPanel);
-            this.Controls.Add(this.MainMenuPanel);
+            this.Controls.Add(this.OrderMenuPanel);
+            this.Controls.Add(this.PaymentPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1100,6 +1394,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             this.PaymentPanel.ResumeLayout(false);
+            this.PaymentPanel.PerformLayout();
+            this.CheckInfoPanel.ResumeLayout(false);
+            this.CheckInfoPanel.PerformLayout();
+            this.CardInfoPanel.ResumeLayout(false);
+            this.CardInfoPanel.PerformLayout();
+            this.CashInfoPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ResumeLayout(false);
@@ -1171,5 +1471,27 @@
         private PictureBox pictureBox8;
         private PictureBox pictureBox7;
         private Label label12;
+        private TextBox SignatureTxtBox;
+        private Label label16;
+        private CheckedListBox DeliveryOrPickup;
+        private Button DoneBtn;
+        private CheckedListBox PaymentType;
+        private Panel CashInfoPanel;
+        private Label cashlbl;
+        private Panel CardInfoPanel;
+        private Panel CheckInfoPanel;
+        private TextBox RouteNumTxtBox;
+        private Label label22;
+        private TextBox AccountNumTxtBox;
+        private Label label21;
+        private CheckedListBox VisaOrMastercard;
+        private Label label17;
+        private TextBox CardNameTxtBox;
+        private TextBox CVVTxtBox;
+        private Label label18;
+        private Label label20;
+        private Label label19;
+        private MaskedTextBox ExpiryDateTxtBox;
+        private MaskedTextBox CardNumTxtBox;
     }
 }

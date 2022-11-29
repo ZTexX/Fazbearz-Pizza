@@ -297,6 +297,11 @@ namespace Fazbearz_Pizza
             }
         }
 
+        private void CreateZIP_KeyPress(Object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
         private void FinishedBtn_Click(object sender, EventArgs e)
         {
             if (checkFilled())
@@ -336,10 +341,8 @@ namespace Fazbearz_Pizza
             {
                 CreateCity.Focus();
                 return false;
-            } else if (CreateZIP.Text == "ZIP" || !CreateZIP.Text.All(Char.IsDigit))
+            } else if (CreateZIP.Text == "ZIP")
             {
-                if (!CreateZIP.Text.All(Char.IsDigit)) CreateZIP.Text = string.Empty;
-
                 CreateZIP.Focus();
                 return false;
             } else if (SelectState.Text == "State")
@@ -607,6 +610,190 @@ namespace Fazbearz_Pizza
         private void BackBtn3_Click(object sender, EventArgs e)
         {
             SwitchMenu(OrderMenuPanel);
+        }
+
+        private void PaymentPanel_Click(object sender, EventArgs e)
+        {
+            PaymentPanel.Focus();
+        }
+
+        private void DeliveryOrPickup_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            for (int i = 0; i < DeliveryOrPickup.Items.Count; i++)
+            {
+                if (i != e.Index) DeliveryOrPickup.SetItemChecked(i, false);
+            }
+        }
+
+        private void DeliveryOrPickup_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < DeliveryOrPickup.Items.Count; i++)
+            {
+                if (DeliveryOrPickup.GetItemRectangle(i).Contains(DeliveryOrPickup.PointToClient(MousePosition)))
+                {
+                    switch (DeliveryOrPickup.GetItemCheckState(i))
+                    {
+                        case CheckState.Checked:
+                            DeliveryOrPickup.SetItemCheckState(i, CheckState.Unchecked);
+                            break;
+                        case CheckState.Indeterminate:
+                        case CheckState.Unchecked:
+                            DeliveryOrPickup.SetItemCheckState(i, CheckState.Checked);
+                            break;
+                    }
+                }
+            }
+        }
+
+        private void DoneBtn_Click(object sender, EventArgs e)
+        {
+            if (PaymentType.CheckedItems.Count == 0) return;
+
+            if (PaymentType.CheckedItems[0].ToString() == "Card")
+            {
+                if (VisaOrMastercard.CheckedItems.Count == 0) return;
+                if (CardNumTxtBox.Text == string.Empty)
+                {
+                    CardNumTxtBox.Focus();
+                    return;
+                }
+
+                if (CardNameTxtBox.Text == string.Empty)
+                {
+                    CardNameTxtBox.Focus();
+                    return;
+                }
+
+                if (ExpiryDateTxtBox.Text == string.Empty)
+                {
+                    ExpiryDateTxtBox.Focus();
+                    return;
+                }
+
+                if (CVVTxtBox.Text == string.Empty)
+                {
+                    CVVTxtBox.Focus();
+                    return;
+                }
+            }
+
+            if (PaymentType.CheckedItems[0].ToString() == "Check")
+            {
+                if (AccountNumTxtBox.Text == string.Empty)
+                {
+                    AccountNumTxtBox.Focus();
+                    return;
+                }
+
+                if (RouteNumTxtBox.Text == string.Empty)
+                {
+                    RouteNumTxtBox.Focus();
+                    return;
+                }
+            }
+
+            if (DeliveryOrPickup.CheckedItems.Count == 0) return;
+
+            if (SignatureTxtBox.Text == string.Empty)
+            {
+                SignatureTxtBox.Focus();
+                return;
+
+            }
+
+            //All Checks Done. Go to Receipt screen
+        }
+
+        private void PaymentType_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            for (int i = 0; i < PaymentType.Items.Count; i++)
+            {
+                if (i != e.Index) PaymentType.SetItemChecked(i, false);
+            }
+        }
+
+        private void PaymentType_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < PaymentType.Items.Count; i++)
+            {
+                if (PaymentType.GetItemRectangle(i).Contains(PaymentType.PointToClient(MousePosition)))
+                {
+                    switch (PaymentType.GetItemCheckState(i))
+                    {
+                        case CheckState.Checked:
+                            PaymentType.SetItemCheckState(i, CheckState.Unchecked);
+                            break;
+                        case CheckState.Indeterminate:
+                        case CheckState.Unchecked:
+                            PaymentType.SetItemCheckState(i, CheckState.Checked);
+                            break;
+                    }
+                }
+            }
+
+            string paymentType = PaymentType.CheckedItems[0].ToString();
+
+            if (paymentType == "Card")
+            {
+                CardInfoPanel.Show();
+                CheckInfoPanel.Hide();
+                CashInfoPanel.Hide();
+            }
+            else if (paymentType == "Check")
+            {
+                CardInfoPanel.Hide();
+                CheckInfoPanel.Show();
+                CashInfoPanel.Hide();
+            }
+            else if (paymentType == "Cash")
+            {
+                CardInfoPanel.Hide();
+                CheckInfoPanel.Hide();
+                CashInfoPanel.Show();
+            }
+        }
+
+        private void VisaOrMastercard_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            for (int i = 0; i < VisaOrMastercard.Items.Count; i++)
+            {
+                if (i != e.Index) VisaOrMastercard.SetItemChecked(i, false);
+            }
+        }
+
+        private void VisaOrMastercard_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < VisaOrMastercard.Items.Count; i++)
+            {
+                if (VisaOrMastercard.GetItemRectangle(i).Contains(VisaOrMastercard.PointToClient(MousePosition)))
+                {
+                    switch (VisaOrMastercard.GetItemCheckState(i))
+                    {
+                        case CheckState.Checked:
+                            VisaOrMastercard.SetItemCheckState(i, CheckState.Unchecked);
+                            break;
+                        case CheckState.Indeterminate:
+                        case CheckState.Unchecked:
+                            VisaOrMastercard.SetItemCheckState(i, CheckState.Checked);
+                            break;
+                    }
+                }
+            }
+        }
+
+        private void CVVTxtBox_KeyPress(Object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void AccountNumTxtBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
+
+        private void RouteNumTxtBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
     }
 }
