@@ -63,6 +63,36 @@ namespace Fazbearz_Pizza.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Arrow {
+            get {
+                object obj = ResourceManager.GetObject("Arrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Arrow_Circle {
+            get {
+                object obj = ResourceManager.GetObject("Arrow_Circle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Arrow_Circle_Left {
+            get {
+                object obj = ResourceManager.GetObject("Arrow_Circle_Left", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Button {
             get {
                 object obj = ResourceManager.GetObject("Button", resourceCulture);
@@ -76,6 +106,16 @@ namespace Fazbearz_Pizza.Properties {
         internal static System.Drawing.Bitmap Half_Rectangle_Curved {
             get {
                 object obj = ResourceManager.GetObject("Half Rectangle Curved", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Hollow_Rect {
+            get {
+                object obj = ResourceManager.GetObject("Hollow Rect", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
