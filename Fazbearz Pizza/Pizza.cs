@@ -49,7 +49,7 @@
 		/*
 		 return Example:
 		 "Pizza: 19$ Size: Extra Large
-			Toppings- 
+		   Toppings- 
 			Extra Cheese
 			pepeprs
 			Olives"
@@ -61,7 +61,7 @@
 
 			if (topings.Length != 0)        // The if there are topping add them the receipt
 			{
-				temp = temp + "\nToppings- ";
+				temp = temp + "\n  Toppings- ";
 				for (int i = 0; i < topings.Length; i++)
 				{
 					if (topings[i] == TopingsEnme.ExCheese) temp = temp + "\n   Extra Cheese";

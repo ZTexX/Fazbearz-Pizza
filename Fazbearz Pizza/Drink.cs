@@ -34,17 +34,17 @@ namespace Fazbearz_Pizza
         }
         public override string ReceiptInfo() // used as part of the recceipt.
         /*
-         return Example: "drink: Coke Size: Small prise: 2$"
+         return Example: "drink: Coke Size: Small price: 2$"
          */
         {
             switch (Type) // Fix the Type Name
             {
                 case DrinkType.DrPepper:
-                    return "drink: Dr.Pepper Size:" + Size + " prise: " + prise + "$" ;
+                    return "drink: Dr.Pepper Size:" + Size + " price: " + prise + "$" ;
                 case DrinkType.MountainDew:
-                    return "drink: Mountain Dew Size:" + Size + " prise: " + prise + "$";
+                    return "drink: Mountain Dew Size:" + Size + " price: " + prise + "$";
                 default:
-                    return "drink: " + Type + " Size:" + Size + " prise: " + prise + "$";
+                    return "drink: " + Type + " Size:" + Size + " price: " + prise + "$";
             }
         }
     }
