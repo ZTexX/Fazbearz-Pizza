@@ -1,25 +1,25 @@
 ﻿using System;
 
-public class Class1
+public class Person
 {
 	private string username;
 	private string password;
 
 
-	public Class1()
+	public Person()
 	{
 	}
 
-	public string Username()
+	public string Username
 	{
 		get { return username; }
-		set { return username; }
+		set { username = value; }
 	}
 
-	public string Password()
+	public string Password
 	{
 		get { return password; }
-		set { return password; }
+		set { password = value; }
 	}
 
 	public bool Login(string str)
@@ -31,4 +31,12 @@ public class Class1
 		else
 			return false;
 	}
+
+	public virtual string ReceiptInfo()
+	{
+		return Username; //placeholder
+	}
+	 
+
+	
 }
