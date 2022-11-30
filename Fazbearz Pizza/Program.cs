@@ -13,5 +13,5 @@ namespace Fazbearz_Pizza
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
         }
-    }
+    } 
 }

@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
-public class Class1
+public class Database
 {
-	public Class1()
-	{
-	}
-}
+	
+}    
