@@ -115,6 +115,13 @@
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.ReceiptPanel = new System.Windows.Forms.Panel();
+            this.label23 = new System.Windows.Forms.Label();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.ReceiptTxtBox = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
             this.MainMenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.IconPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DropdownPicture)).BeginInit();
@@ -134,6 +141,9 @@
             this.CashInfoPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            this.ReceiptPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.SuspendLayout();
             // 
             // MainMenuPanel
@@ -1360,15 +1370,97 @@
             this.label12.Text = "Fazbearz Pizza";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // ReceiptPanel
+            // 
+            this.ReceiptPanel.Controls.Add(this.label25);
+            this.ReceiptPanel.Controls.Add(this.ReceiptTxtBox);
+            this.ReceiptPanel.Controls.Add(this.label24);
+            this.ReceiptPanel.Controls.Add(this.pictureBox10);
+            this.ReceiptPanel.Controls.Add(this.pictureBox9);
+            this.ReceiptPanel.Controls.Add(this.label23);
+            this.ReceiptPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ReceiptPanel.Location = new System.Drawing.Point(0, 0);
+            this.ReceiptPanel.Name = "ReceiptPanel";
+            this.ReceiptPanel.Size = new System.Drawing.Size(1904, 1041);
+            this.ReceiptPanel.TabIndex = 8;
+            // 
+            // label23
+            // 
+            this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(80)))), ((int)(((byte)(147)))));
+            this.label23.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label23.Font = new System.Drawing.Font("Kristen ITC", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label23.Location = new System.Drawing.Point(0, 0);
+            this.label23.Margin = new System.Windows.Forms.Padding(0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(1904, 83);
+            this.label23.TabIndex = 2;
+            this.label23.Text = "Fazbearz Pizza";
+            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox9.BackgroundImage = global::Fazbearz_Pizza.Properties.Resources.Icon;
+            this.pictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox9.Location = new System.Drawing.Point(707, 11);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(54, 65);
+            this.pictureBox9.TabIndex = 3;
+            this.pictureBox9.TabStop = false;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.BackgroundImage = global::Fazbearz_Pizza.Properties.Resources.Half_Rectangle_Curved;
+            this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox10.Location = new System.Drawing.Point(745, 82);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(364, 58);
+            this.pictureBox10.TabIndex = 4;
+            this.pictureBox10.TabStop = false;
+            // 
+            // label24
+            // 
+            this.label24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(80)))), ((int)(((byte)(147)))));
+            this.label24.Font = new System.Drawing.Font("Britannic Bold", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label24.ForeColor = System.Drawing.SystemColors.Info;
+            this.label24.Location = new System.Drawing.Point(780, 82);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(289, 58);
+            this.label24.TabIndex = 5;
+            this.label24.Text = "Receipt";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ReceiptTxtBox
+            // 
+            this.ReceiptTxtBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ReceiptTxtBox.Location = new System.Drawing.Point(714, 281);
+            this.ReceiptTxtBox.Multiline = true;
+            this.ReceiptTxtBox.Name = "ReceiptTxtBox";
+            this.ReceiptTxtBox.ReadOnly = true;
+            this.ReceiptTxtBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.ReceiptTxtBox.Size = new System.Drawing.Size(429, 455);
+            this.ReceiptTxtBox.TabIndex = 23;
+            // 
+            // label25
+            // 
+            this.label25.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label25.Location = new System.Drawing.Point(789, 242);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(259, 36);
+            this.label25.TabIndex = 24;
+            this.label25.Text = "Order Receipt";
+            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Fazbearz_Pizza
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.ReceiptPanel);
+            this.Controls.Add(this.OrderMenuPanel);
             this.Controls.Add(this.MainMenuPanel);
             this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.CreateAccountPanel);
-            this.Controls.Add(this.OrderMenuPanel);
             this.Controls.Add(this.PaymentPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1402,6 +1494,10 @@
             this.CashInfoPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            this.ReceiptPanel.ResumeLayout(false);
+            this.ReceiptPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1493,5 +1589,12 @@
         private Label label19;
         private MaskedTextBox ExpiryDateTxtBox;
         private MaskedTextBox CardNumTxtBox;
+        private Panel ReceiptPanel;
+        private Label label25;
+        private TextBox ReceiptTxtBox;
+        private Label label24;
+        private PictureBox pictureBox10;
+        private PictureBox pictureBox9;
+        private Label label23;
     }
 }
