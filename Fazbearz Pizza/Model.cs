@@ -9,4 +9,14 @@ namespace Fazbearz_Pizza
     internal class Model
     {
     }
+
+    //vairable: currentorder, database, currentuser
+    //functions:
+    //Login()
+    //getCustomerOrders()
+    //GetNumCustomerOrders()
+    //StartNewOrder()
+    //addItem(item)
+    //ReceiptInfo()
+    //PrintReceipt()
 }
