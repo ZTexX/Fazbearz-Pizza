@@ -27,7 +27,7 @@ namespace Fazbearz_Pizza
         private void Fazbearz_Pizza_Load(object sender, EventArgs e)
         {
             panels = Controls.OfType<Panel>().ToArray();
-            SwitchMenu(OrderMenuPanel);
+            SwitchMenu(MainMenuPanel);
         }
 
         private void SwitchMenu(Panel panel)
