@@ -1,16 +1,28 @@
 ﻿using System;
 
-public class Customer : Person
+public class Customer
 {
-	private string name;
-	private string address;
-	private string
-	private bool isVisaCard;
+    public string name { get; set; }
+    public string address { get; set; }
+    public string city { get; set; }
+    public string state { get; set; }
+    public string zipcode { get; set; }
+    public string username { get; set; }
+    public string password { get; set; }
 
-	public Customer()
-	{
-		
-	}
+
+
+    public Customer(string c, string u, string p, string n, string a, string s, string z)
+    {
+        username = u;
+        password = p;
+        name = n;
+        address = a;
+        city = c;
+        state = s;
+        zipcode = z;
+
+    }
 
     public bool Login(string str)
     {
@@ -22,11 +34,15 @@ public class Customer : Person
             return false;
     }
 
-    public virtual string ReceiptInfo()
+    public string ReceiptInfo()
+    /*
+       Example:
+    name:bob
+    Address: address, city, state zipcode
+
+     */
     {
-        return Username; //placeholder
+        return "name:" + name +
+               "\nAddress:" + address + ", " + city + ", " + state + " " + zipcode;
     }
-
-
-
 }
