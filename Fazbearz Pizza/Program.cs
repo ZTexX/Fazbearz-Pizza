@@ -8,16 +8,10 @@ namespace Fazbearz_Pizza
         /// </summary>
         static void Main()
         {
-            Pizza test = new Pizza(sizeEnme.XL, CrustEnme.Stuffed,new TopingsEnme[3] {TopingsEnme.ExCheese,TopingsEnme.pepeprs,TopingsEnme.Olives});
-            Drink test2 = new Drink(DrinkType.DrPepper, DrinkSize.Large);
-
-            Order Test3 = new Order(69420);
-
-            Test3.addItem(test);
-            Test3.addItem(test2);
-
-            string tem = Test3.OrderSlip();
-            int T = 0;
+            // To customize application configuration such as set high DPI settings or default font,
+            // see https://aka.ms/applicationconfiguration.
+            ApplicationConfiguration.Initialize();
+            Application.Run(new Fazbearz_Pizza());
         }
     } 
 }
