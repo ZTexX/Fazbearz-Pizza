@@ -116,12 +116,31 @@
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
             this.ReceiptPanel = new System.Windows.Forms.Panel();
-            this.label23 = new System.Windows.Forms.Label();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.label24 = new System.Windows.Forms.Label();
-            this.ReceiptTxtBox = new System.Windows.Forms.TextBox();
+            this.HomeBtn = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
+            this.ReceiptTxtBox = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.ManagerDatabasePanel = new System.Windows.Forms.Panel();
+            this.BackBtn5 = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.label27 = new System.Windows.Forms.Label();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.OrderHistoryPanel = new System.Windows.Forms.Panel();
+            this.BackBtn4 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.OrderHistoryEntries = new System.Windows.Forms.TableLayoutPanel();
+            this.label29 = new System.Windows.Forms.Label();
+            this.pictureBox14 = new System.Windows.Forms.PictureBox();
+            this.pictureBox13 = new System.Windows.Forms.PictureBox();
+            this.label28 = new System.Windows.Forms.Label();
             this.MainMenuPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.IconPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DropdownPicture)).BeginInit();
@@ -142,8 +161,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.ReceiptPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            this.ManagerDatabasePanel.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
+            this.OrderHistoryPanel.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             this.SuspendLayout();
             // 
             // MainMenuPanel
@@ -594,7 +621,7 @@
             this.CreateAddress2.Name = "CreateAddress2";
             this.CreateAddress2.Size = new System.Drawing.Size(522, 23);
             this.CreateAddress2.TabIndex = 12;
-            this.CreateAddress2.Text = "Address 2 (Optional)";
+            this.CreateAddress2.Text = "Address 2 / Delivery Instructions (Optional)";
             this.CreateAddress2.Enter += new System.EventHandler(this.CreateAddress2_Enter);
             this.CreateAddress2.Leave += new System.EventHandler(this.CreateAddress2_Leave);
             // 
@@ -730,7 +757,6 @@
             this.OrderMenuPanel.Name = "OrderMenuPanel";
             this.OrderMenuPanel.Size = new System.Drawing.Size(1904, 1041);
             this.OrderMenuPanel.TabIndex = 21;
-            this.OrderMenuPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.OrderMenu_Paint);
             // 
             // OrderHistoryBtn
             // 
@@ -1372,6 +1398,7 @@
             // 
             // ReceiptPanel
             // 
+            this.ReceiptPanel.Controls.Add(this.HomeBtn);
             this.ReceiptPanel.Controls.Add(this.label25);
             this.ReceiptPanel.Controls.Add(this.ReceiptTxtBox);
             this.ReceiptPanel.Controls.Add(this.label24);
@@ -1383,6 +1410,78 @@
             this.ReceiptPanel.Name = "ReceiptPanel";
             this.ReceiptPanel.Size = new System.Drawing.Size(1904, 1041);
             this.ReceiptPanel.TabIndex = 8;
+            // 
+            // HomeBtn
+            // 
+            this.HomeBtn.BackColor = System.Drawing.Color.Transparent;
+            this.HomeBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("HomeBtn.BackgroundImage")));
+            this.HomeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.HomeBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.HomeBtn.FlatAppearance.BorderColor = System.Drawing.SystemColors.Control;
+            this.HomeBtn.FlatAppearance.BorderSize = 0;
+            this.HomeBtn.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.HomeBtn.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.HomeBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.HomeBtn.Location = new System.Drawing.Point(875, 790);
+            this.HomeBtn.Name = "HomeBtn";
+            this.HomeBtn.Size = new System.Drawing.Size(84, 71);
+            this.HomeBtn.TabIndex = 25;
+            this.HomeBtn.UseVisualStyleBackColor = false;
+            this.HomeBtn.Click += new System.EventHandler(this.HomeBtn_Click);
+            // 
+            // label25
+            // 
+            this.label25.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label25.Location = new System.Drawing.Point(789, 242);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(259, 36);
+            this.label25.TabIndex = 24;
+            this.label25.Text = "Order Receipt";
+            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ReceiptTxtBox
+            // 
+            this.ReceiptTxtBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ReceiptTxtBox.Location = new System.Drawing.Point(714, 281);
+            this.ReceiptTxtBox.Multiline = true;
+            this.ReceiptTxtBox.Name = "ReceiptTxtBox";
+            this.ReceiptTxtBox.ReadOnly = true;
+            this.ReceiptTxtBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.ReceiptTxtBox.Size = new System.Drawing.Size(429, 455);
+            this.ReceiptTxtBox.TabIndex = 23;
+            // 
+            // label24
+            // 
+            this.label24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(80)))), ((int)(((byte)(147)))));
+            this.label24.Font = new System.Drawing.Font("Britannic Bold", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label24.ForeColor = System.Drawing.SystemColors.Info;
+            this.label24.Location = new System.Drawing.Point(780, 82);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(289, 58);
+            this.label24.TabIndex = 5;
+            this.label24.Text = "Receipt";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox10
+            // 
+            this.pictureBox10.BackgroundImage = global::Fazbearz_Pizza.Properties.Resources.Half_Rectangle_Curved;
+            this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox10.Location = new System.Drawing.Point(745, 82);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(364, 58);
+            this.pictureBox10.TabIndex = 4;
+            this.pictureBox10.TabStop = false;
+            // 
+            // pictureBox9
+            // 
+            this.pictureBox9.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox9.BackgroundImage = global::Fazbearz_Pizza.Properties.Resources.Icon;
+            this.pictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox9.Location = new System.Drawing.Point(707, 11);
+            this.pictureBox9.Name = "pictureBox9";
+            this.pictureBox9.Size = new System.Drawing.Size(54, 65);
+            this.pictureBox9.TabIndex = 3;
+            this.pictureBox9.TabStop = false;
             // 
             // label23
             // 
@@ -1397,70 +1496,275 @@
             this.label23.Text = "Fazbearz Pizza";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox9
+            // ManagerDatabasePanel
             // 
-            this.pictureBox9.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox9.BackgroundImage = global::Fazbearz_Pizza.Properties.Resources.Icon;
-            this.pictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox9.Location = new System.Drawing.Point(707, 11);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(54, 65);
-            this.pictureBox9.TabIndex = 3;
-            this.pictureBox9.TabStop = false;
+            this.ManagerDatabasePanel.Controls.Add(this.BackBtn5);
+            this.ManagerDatabasePanel.Controls.Add(this.panel2);
+            this.ManagerDatabasePanel.Controls.Add(this.label27);
+            this.ManagerDatabasePanel.Controls.Add(this.pictureBox12);
+            this.ManagerDatabasePanel.Controls.Add(this.pictureBox11);
+            this.ManagerDatabasePanel.Controls.Add(this.label26);
+            this.ManagerDatabasePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ManagerDatabasePanel.Location = new System.Drawing.Point(0, 0);
+            this.ManagerDatabasePanel.Name = "ManagerDatabasePanel";
+            this.ManagerDatabasePanel.Size = new System.Drawing.Size(1904, 1041);
+            this.ManagerDatabasePanel.TabIndex = 25;
             // 
-            // pictureBox10
+            // BackBtn5
             // 
-            this.pictureBox10.BackgroundImage = global::Fazbearz_Pizza.Properties.Resources.Half_Rectangle_Curved;
-            this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox10.Location = new System.Drawing.Point(745, 82);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(364, 58);
-            this.pictureBox10.TabIndex = 4;
-            this.pictureBox10.TabStop = false;
+            this.BackBtn5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(80)))), ((int)(((byte)(147)))));
+            this.BackBtn5.BackgroundImage = global::Fazbearz_Pizza.Properties.Resources.Arrow_Circle_Left;
+            this.BackBtn5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BackBtn5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BackBtn5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(80)))), ((int)(((byte)(147)))));
+            this.BackBtn5.FlatAppearance.BorderSize = 0;
+            this.BackBtn5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(80)))), ((int)(((byte)(147)))));
+            this.BackBtn5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(80)))), ((int)(((byte)(147)))));
+            this.BackBtn5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BackBtn5.Location = new System.Drawing.Point(12, 11);
+            this.BackBtn5.Name = "BackBtn5";
+            this.BackBtn5.Size = new System.Drawing.Size(46, 45);
+            this.BackBtn5.TabIndex = 10;
+            this.BackBtn5.UseVisualStyleBackColor = false;
+            this.BackBtn5.Click += new System.EventHandler(this.BackBtn5_Click);
             // 
-            // label24
+            // panel2
             // 
-            this.label24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(80)))), ((int)(((byte)(147)))));
-            this.label24.Font = new System.Drawing.Font("Britannic Bold", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label24.ForeColor = System.Drawing.SystemColors.Info;
-            this.label24.Location = new System.Drawing.Point(780, 82);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(289, 58);
-            this.label24.TabIndex = 5;
-            this.label24.Text = "Receipt";
-            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.tableLayoutPanel2);
+            this.panel2.Controls.Add(this.tableLayoutPanel3);
+            this.panel2.Location = new System.Drawing.Point(516, 269);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(805, 401);
+            this.panel2.TabIndex = 9;
             // 
-            // ReceiptTxtBox
+            // tableLayoutPanel2
             // 
-            this.ReceiptTxtBox.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ReceiptTxtBox.Location = new System.Drawing.Point(714, 281);
-            this.ReceiptTxtBox.Multiline = true;
-            this.ReceiptTxtBox.Name = "ReceiptTxtBox";
-            this.ReceiptTxtBox.ReadOnly = true;
-            this.ReceiptTxtBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.ReceiptTxtBox.Size = new System.Drawing.Size(429, 455);
-            this.ReceiptTxtBox.TabIndex = 23;
+            this.tableLayoutPanel2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel2.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel2.ColumnCount = 6;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 44);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(805, 29);
+            this.tableLayoutPanel2.TabIndex = 1;
             // 
-            // label25
+            // tableLayoutPanel3
             // 
-            this.label25.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label25.Location = new System.Drawing.Point(789, 242);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(259, 36);
-            this.label25.TabIndex = 24;
-            this.label25.Text = "Order Receipt";
-            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tableLayoutPanel3.AutoSize = true;
+            this.tableLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(82)))), ((int)(((byte)(78)))));
+            this.tableLayoutPanel3.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.tableLayoutPanel3.ColumnCount = 6;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(805, 44);
+            this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // label27
+            // 
+            this.label27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(80)))), ((int)(((byte)(147)))));
+            this.label27.Font = new System.Drawing.Font("Britannic Bold", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label27.ForeColor = System.Drawing.SystemColors.Info;
+            this.label27.Location = new System.Drawing.Point(761, 82);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(334, 58);
+            this.label27.TabIndex = 6;
+            this.label27.Text = "Manager Database";
+            this.label27.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox12
+            // 
+            this.pictureBox12.BackgroundImage = global::Fazbearz_Pizza.Properties.Resources.Half_Rectangle_Curved;
+            this.pictureBox12.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox12.Location = new System.Drawing.Point(745, 82);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(364, 58);
+            this.pictureBox12.TabIndex = 5;
+            this.pictureBox12.TabStop = false;
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox11.BackgroundImage = global::Fazbearz_Pizza.Properties.Resources.Icon;
+            this.pictureBox11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox11.Location = new System.Drawing.Point(707, 12);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(54, 65);
+            this.pictureBox11.TabIndex = 4;
+            this.pictureBox11.TabStop = false;
+            // 
+            // label26
+            // 
+            this.label26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(80)))), ((int)(((byte)(147)))));
+            this.label26.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label26.Font = new System.Drawing.Font("Kristen ITC", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label26.Location = new System.Drawing.Point(0, 0);
+            this.label26.Margin = new System.Windows.Forms.Padding(0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(1904, 83);
+            this.label26.TabIndex = 3;
+            this.label26.Text = "Fazbearz Pizza";
+            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // OrderHistoryPanel
+            // 
+            this.OrderHistoryPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.OrderHistoryPanel.Controls.Add(this.BackBtn4);
+            this.OrderHistoryPanel.Controls.Add(this.panel1);
+            this.OrderHistoryPanel.Controls.Add(this.label29);
+            this.OrderHistoryPanel.Controls.Add(this.pictureBox14);
+            this.OrderHistoryPanel.Controls.Add(this.pictureBox13);
+            this.OrderHistoryPanel.Controls.Add(this.label28);
+            this.OrderHistoryPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OrderHistoryPanel.Location = new System.Drawing.Point(0, 0);
+            this.OrderHistoryPanel.Name = "OrderHistoryPanel";
+            this.OrderHistoryPanel.Size = new System.Drawing.Size(1904, 1041);
+            this.OrderHistoryPanel.TabIndex = 7;
+            // 
+            // BackBtn4
+            // 
+            this.BackBtn4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(80)))), ((int)(((byte)(147)))));
+            this.BackBtn4.BackgroundImage = global::Fazbearz_Pizza.Properties.Resources.Arrow_Circle_Left;
+            this.BackBtn4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BackBtn4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BackBtn4.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(80)))), ((int)(((byte)(147)))));
+            this.BackBtn4.FlatAppearance.BorderSize = 0;
+            this.BackBtn4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(80)))), ((int)(((byte)(147)))));
+            this.BackBtn4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(80)))), ((int)(((byte)(147)))));
+            this.BackBtn4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BackBtn4.Location = new System.Drawing.Point(10, 11);
+            this.BackBtn4.Name = "BackBtn4";
+            this.BackBtn4.Size = new System.Drawing.Size(46, 45);
+            this.BackBtn4.TabIndex = 9;
+            this.BackBtn4.UseVisualStyleBackColor = false;
+            this.BackBtn4.Click += new System.EventHandler(this.BackBtn4_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.tableLayoutPanel1);
+            this.panel1.Controls.Add(this.OrderHistoryEntries);
+            this.panel1.Location = new System.Drawing.Point(514, 242);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(805, 401);
+            this.panel1.TabIndex = 8;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.tableLayoutPanel1.ColumnCount = 6;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 44);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(805, 29);
+            this.tableLayoutPanel1.TabIndex = 1;
+            // 
+            // OrderHistoryEntries
+            // 
+            this.OrderHistoryEntries.AutoSize = true;
+            this.OrderHistoryEntries.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.OrderHistoryEntries.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(82)))), ((int)(((byte)(78)))));
+            this.OrderHistoryEntries.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
+            this.OrderHistoryEntries.ColumnCount = 6;
+            this.OrderHistoryEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.OrderHistoryEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.OrderHistoryEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.OrderHistoryEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.OrderHistoryEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.OrderHistoryEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.OrderHistoryEntries.Dock = System.Windows.Forms.DockStyle.Top;
+            this.OrderHistoryEntries.Location = new System.Drawing.Point(0, 0);
+            this.OrderHistoryEntries.Name = "OrderHistoryEntries";
+            this.OrderHistoryEntries.RowCount = 1;
+            this.OrderHistoryEntries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.OrderHistoryEntries.Size = new System.Drawing.Size(805, 44);
+            this.OrderHistoryEntries.TabIndex = 0;
+            // 
+            // label29
+            // 
+            this.label29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(80)))), ((int)(((byte)(147)))));
+            this.label29.Font = new System.Drawing.Font("Britannic Bold", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label29.ForeColor = System.Drawing.SystemColors.Info;
+            this.label29.Location = new System.Drawing.Point(789, 82);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(272, 58);
+            this.label29.TabIndex = 7;
+            this.label29.Text = "Order History";
+            this.label29.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pictureBox14
+            // 
+            this.pictureBox14.BackgroundImage = global::Fazbearz_Pizza.Properties.Resources.Half_Rectangle_Curved;
+            this.pictureBox14.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox14.Location = new System.Drawing.Point(745, 82);
+            this.pictureBox14.Name = "pictureBox14";
+            this.pictureBox14.Size = new System.Drawing.Size(364, 58);
+            this.pictureBox14.TabIndex = 6;
+            this.pictureBox14.TabStop = false;
+            // 
+            // pictureBox13
+            // 
+            this.pictureBox13.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox13.BackgroundImage = global::Fazbearz_Pizza.Properties.Resources.Icon;
+            this.pictureBox13.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox13.Location = new System.Drawing.Point(712, 11);
+            this.pictureBox13.Name = "pictureBox13";
+            this.pictureBox13.Size = new System.Drawing.Size(54, 65);
+            this.pictureBox13.TabIndex = 5;
+            this.pictureBox13.TabStop = false;
+            // 
+            // label28
+            // 
+            this.label28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(80)))), ((int)(((byte)(147)))));
+            this.label28.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label28.Font = new System.Drawing.Font("Kristen ITC", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label28.Location = new System.Drawing.Point(0, 0);
+            this.label28.Margin = new System.Windows.Forms.Padding(0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(1900, 83);
+            this.label28.TabIndex = 4;
+            this.label28.Text = "Fazbearz Pizza";
+            this.label28.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Fazbearz_Pizza
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.ReceiptPanel);
             this.Controls.Add(this.OrderMenuPanel);
-            this.Controls.Add(this.MainMenuPanel);
+            this.Controls.Add(this.OrderHistoryPanel);
+            this.Controls.Add(this.ManagerDatabasePanel);
+            this.Controls.Add(this.ReceiptPanel);
             this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.CreateAccountPanel);
+            this.Controls.Add(this.MainMenuPanel);
             this.Controls.Add(this.PaymentPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -1496,8 +1800,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.ReceiptPanel.ResumeLayout(false);
             this.ReceiptPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            this.ManagerDatabasePanel.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
+            this.OrderHistoryPanel.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1596,5 +1910,24 @@
         private PictureBox pictureBox10;
         private PictureBox pictureBox9;
         private Label label23;
+        private Panel ManagerDatabasePanel;
+        private Label label27;
+        private PictureBox pictureBox12;
+        private PictureBox pictureBox11;
+        private Label label26;
+        private Panel OrderHistoryPanel;
+        private Label label29;
+        private PictureBox pictureBox14;
+        private PictureBox pictureBox13;
+        private Label label28;
+        private Panel panel1;
+        private TableLayoutPanel OrderHistoryEntries;
+        private TableLayoutPanel tableLayoutPanel1;
+        private Button BackBtn5;
+        private Panel panel2;
+        private TableLayoutPanel tableLayoutPanel2;
+        private TableLayoutPanel tableLayoutPanel3;
+        private Button BackBtn4;
+        private Button HomeBtn;
     }
 }

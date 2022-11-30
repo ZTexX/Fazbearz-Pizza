@@ -19,9 +19,6 @@ namespace Fazbearz_Pizza
         private Panel[] panels;
         private int orderNum;
 
-        private string customerName;
-        private string customerAddress;
-
         public Fazbearz_Pizza()
         {
             InitializeComponent();
@@ -30,7 +27,7 @@ namespace Fazbearz_Pizza
         private void Fazbearz_Pizza_Load(object sender, EventArgs e)
         {
             panels = Controls.OfType<Panel>().ToArray();
-            SwitchMenu(MainMenuPanel);
+            SwitchMenu(OrderMenuPanel);
         }
 
         private void SwitchMenu(Panel panel)
@@ -251,7 +248,7 @@ namespace Fazbearz_Pizza
 
         private void CreateAddress2_Enter(Object sender, EventArgs e)
         {
-            if (CreateAddress2.Text == "Address 2 (Optional)")
+            if (CreateAddress2.Text == "Address 2 / Delivery Instructions (Optional)")
             {
                 CreateAddress2.Text = string.Empty;
             }
@@ -261,7 +258,7 @@ namespace Fazbearz_Pizza
         {
             if (CreateAddress2.Text == string.Empty)
             {
-                CreateAddress2.Text = "Address 2 (Optional)";
+                CreateAddress2.Text = "Address 2 / Delivery Instructions (Optional)";
             }
         }
 
@@ -353,12 +350,6 @@ namespace Fazbearz_Pizza
 
             return true;
         }
-
-        private void OrderMenu_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         //Create Account Menu END
 
         //Order Menu BEGIN
@@ -601,7 +592,7 @@ namespace Fazbearz_Pizza
 
         private void OrderHistoryBtn_Click(object sender, EventArgs e)
         {
-            // Go to order history page
+            SwitchMenu(OrderHistoryPanel);
         }
 
         //Order Menu END
@@ -611,7 +602,7 @@ namespace Fazbearz_Pizza
         {
             SwitchMenu(OrderMenuPanel);
         }
-
+        
         private void PaymentPanel_Click(object sender, EventArgs e)
         {
             PaymentPanel.Focus();
@@ -795,5 +786,27 @@ namespace Fazbearz_Pizza
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
+        //Payment Processing Menu END
+
+        //Receipt Menu BEGIN
+        private void HomeBtn_Click(object sender, EventArgs e)
+        {
+            SwitchMenu(MainMenuPanel);
+        }
+        //Receipt Menu END
+
+        //Manager Database BEGIN
+        private void BackBtn5_Click(object sender, EventArgs e)
+        {
+            SwitchMenu(MainMenuPanel);
+        }
+        //Manager Database END
+
+        //Order History Menu BEGIN
+        private void BackBtn4_Click(object sender, EventArgs e)
+        {
+            // Code Here
+        }
+        //Order History Menu END
     }
 }
