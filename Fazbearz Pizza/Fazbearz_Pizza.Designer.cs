@@ -956,7 +956,7 @@
             this.CrustType.FormattingEnabled = true;
             this.CrustType.Items.AddRange(new object[] {
             "Thin",
-            "Thick",
+            "Normal",
             "Stuffed / +$3.99"});
             this.CrustType.Location = new System.Drawing.Point(597, 439);
             this.CrustType.Name = "CrustType";
