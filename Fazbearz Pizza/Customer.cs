@@ -4,6 +4,8 @@ public class Customer
 {
     public string name { get; set; }
     public string address { get; set; }
+
+    public string directions{ get; set; }
     public string city { get; set; }
     public string state { get; set; }
     public string zipcode { get; set; }
@@ -12,12 +14,13 @@ public class Customer
 
 
 
-    public Customer(string c, string u, string p, string n, string a, string s, string z)
+    public Customer( string u, string p, string n, string a, string d, string c, string s, string z)
     {
         username = u;
         password = p;
         name = n;
         address = a;
+        directions = d;
         city = c;
         state = s;
         zipcode = z;

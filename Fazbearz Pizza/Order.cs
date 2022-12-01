@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Fazbearz_Pizza
 {
-    internal class Order
+    class Order : ObjectIDGenerator
     {
-        private int number;
-        private DateTime date;
+        public long id;
+        public DateTime date;
         public bool isPickUp;
-        private List<Item> items;
-
-        public Order(int number)
+        public List<Item> items;
+        private bool firstTime = true;
+        
+        public Order()
         {
-            this.number = number;
+            this.id = GetId(this, out bool firstTime);
             date = DateTime.Now;
             items = new List<Item>();
         }
@@ -60,7 +62,7 @@ Order Number: 69420
             "
              */
         {
-            string temp = "Order Number: "+number;
+            string temp = "Order Number: "+ id;
             
             foreach(Item item in items)
             {

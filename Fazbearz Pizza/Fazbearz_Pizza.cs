@@ -18,10 +18,14 @@ namespace Fazbearz_Pizza
     {
         private Panel[] panels;
         private int orderNum;
+        private Model model;
+        private string managerUsername = "manager";
+        private string managerPassword = "password";
 
         public Fazbearz_Pizza()
         {
             InitializeComponent();
+            model = new Model();
         }
 
         private void Fazbearz_Pizza_Load(object sender, EventArgs e)
@@ -125,32 +129,52 @@ namespace Fazbearz_Pizza
         {
             string username = UsernameTxtBox.Text;
             string password = PasswordTxtBox.Text;
-            bool validLogin = LogIn(username, password);
-            if (validLogin)
+            bool validCustomerLogin = LogIn(username, password);
+            
+            if (validCustomerLogin)
             {
                 SwitchMenu(OrderMenuPanel);
 
-                Random rnd = new Random();
+               // Random rnd = new Random();
                 //Add check to make sure order number is not in database
-                orderNum = rnd.Next(100000, 1000000);
-                OrderNumLbl.Text = "Order #  " + orderNum;
+                //orderNum = rnd.Next(100000, 1000000);
+                //OrderNumLbl.Text = "Order #  " + orderNum;
             }
+            else
+                SwitchMenu(ManagerDatabasePanel);
+
+
         }
 
         private bool LogIn(string username, string password)
         {
-            if (UsernameTxtBox.Text == "Username")
+            
+
+            if (UsernameTxtBox.Text.Equals("Username") ||username.Equals(managerUsername))
             {
                 UsernameTxtBox.Focus();
                 return false;
-            } else if (PasswordTxtBox.Text == "Password")
+            }
+            else if (UsernameTxtBox.Text.Equals("Password") || password.Equals(managerPassword))
             {
                 PasswordTxtBox.Focus();
                 return false;
             }
 
-            //Database check before log in
-            return true;
+            model.Login(username, password);
+
+            if (model.LoginCheck() == true)
+            {
+                
+                return true;
+            }
+            else
+            {
+                model.Logout();
+                return false;
+            }
+                
+            
         }
         //Log In Menu END
 
@@ -304,12 +328,16 @@ namespace Fazbearz_Pizza
             if (checkFilled())
             {
                 //Add data to database
-                SwitchMenu(OrderMenuPanel);
+                model.CreateAccount(CreateUsername.Text, CreatePassword.Text, CreateName.Text, CreateAddress1.Text,
+                    CreateAddress2.Text, CreateCity.Text, SelectState.Text, CreateZIP.Text);
 
-                Random rnd = new Random();
+
+                SwitchMenu(OrderMenuPanel);
+                model.StartNewOrder();
+                //Random rnd = new Random();
                 //Add check to make sure order number is not in database
-                orderNum = rnd.Next(100000, 1000000);
-                OrderNumLbl.Text = "Order #  " + orderNum;
+                //orderNum = rnd.Next(100000, 1000000);
+                //OrderNumLbl.Text = "Order #  " + orderNum;
             }
         }
 

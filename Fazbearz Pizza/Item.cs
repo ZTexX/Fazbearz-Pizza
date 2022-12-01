@@ -3,11 +3,11 @@
 	
 	public class Item// this class represents an item 
 	{
-		protected float prise;
+		protected float price;
 
 		public float GetPrice()
         {
-			return prise;
+			return price;
         }
 		virtual public string ReceiptInfo()   // used as part of the recceipt. !!must be redefined !!
 		{

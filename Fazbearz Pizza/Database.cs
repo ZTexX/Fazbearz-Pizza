@@ -4,6 +4,7 @@ using System.Text.Json.Serialization;
 using System.IO;
 using static System.Net.Mime.MediaTypeNames;
 using System.Collections.Generic;
+using Fazbearz_Pizza;
 // using Newtonsoft.Json;
 public class Database
 {
@@ -11,6 +12,9 @@ public class Database
     private static readonly JsonSerializerOptions _options =
        new() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
 
+    /// <summary>
+    /// Constructor that creates a new file if one does not exist and also catches other exceptions
+    /// </summary>
     public Database()
     {
         try
@@ -27,6 +31,10 @@ public class Database
 
     }
 
+    /// <summary>
+    /// Adds a new customer account as a dataBaseObject to the end of the json file
+    /// </summary>
+    /// <param name="customer"></param>
     public void CreateCustomerAccount(Customer customer)
     {
         string customerInfo = "!" + JsonSerializer.Serialize(new dataBaseObject(customer));
@@ -35,14 +43,25 @@ public class Database
         File.AppendAllText(fileName, customerInfo);
        
     }
-    public Customer GetCustomer(string UserName)
+
+    /// <summary>
+    /// Returns a customer object that matches given username
+    /// </summary>
+    /// <param name="UserName"></param>
+    /// <returns></returns>
+    public Customer GetCustomer(string UserName, string password)
     {
-        dataBaseObject temp = getDataObject(UserName);
+        dataBaseObject temp = getDataObject(UserName, password);
         if (temp == null){
             return null;
         }
         return temp.customer;
     }
+
+    /// <summary>
+    /// Returns an array of customers from the array of dataObjects
+    /// </summary>
+    /// <returns></returns>
     public Customer[] GetCustomerArray()
     {
         dataBaseObject[] objects = getDataObjectArray();
@@ -55,9 +74,15 @@ public class Database
         return goal.ToArray();
     }
 
-    public int GetTotalOrders(string username)
+
+    /// <summary>
+    /// Returns the total number of orders on a customer account's history
+    /// </summary>
+    /// <param name="username"></param>
+    /// <returns></returns>
+    public int GetTotalOrders(string username, string password)
     {
-        dataBaseObject temp = getDataObject(username);
+        dataBaseObject temp = getDataObject(username, password);
         if (temp == null)
         {
             return 0;
@@ -65,6 +90,13 @@ public class Database
         return temp.Orders.Count;
     }
 
+
+    /// <summary>
+    /// Calls getDataObjectArray() to create an array of dataBaseObjects. If the object with the matching username is found, string order is added to the customer's order array.
+    /// The new changes overwrite the file.
+    /// </summary>
+    /// <param name="order"></param>
+    /// <param name="UserName"></param>
     public void AddOrder(string order, string UserName)
     {
         dataBaseObject[] objects = getDataObjectArray();
@@ -86,7 +118,13 @@ public class Database
         File.WriteAllText(fileName, customerInfo);
      }
 
-    private dataBaseObject[] getDataObjectArray()
+
+    /// <summary>
+    /// Splits every databaseObject inside of the file into an array.
+    /// Returns the deserialized objects as a dataBaseObject array.
+    /// </summary>
+    /// <returns></returns>
+    public dataBaseObject[] getDataObjectArray()
     {
         string temp = File.ReadAllText(fileName);
         string[] objects = temp.Split('!');
@@ -100,7 +138,14 @@ public class Database
         return goal.ToArray();
     }
 
-    private dataBaseObject getDataObject(string UserName)
+
+    /// <summary>
+    /// Returns a single dataBaseObject by searching through the file and deserializing the object with matching username.
+    /// Returns null if matching username is not found.
+    /// </summary>
+    /// <param name="UserName"></param>
+    /// <returns></returns>
+    public dataBaseObject getDataObject(string UserName, string password)
     {
         string temp = File.ReadAllText(fileName);
         string[] objects = temp.Split('!');
@@ -109,7 +154,7 @@ public class Database
         {
             if (obj != null) {
                 dataBaseObject temp2 = JsonSerializer.Deserialize<dataBaseObject>(obj)!; 
-                if(temp2.customer.username == UserName)
+                if(temp2.customer.username == UserName && temp2.customer.password == password)
                 {
                     goal = temp2;
                     break;
@@ -123,13 +168,18 @@ public class Database
     }
 }
 
+/// <summary>
+/// A dataBaseObject is a customer object that also holds a string list of orders.
+/// </summary>
 public class dataBaseObject
 {
+    public Customer customer { get; set; }
+    public List<string> Orders { get; set; }
+
     public dataBaseObject(Customer customer)
     {
         this.customer = customer;
         Orders = new List<string>();
     }
-    public Customer customer { get; set; }
-    public List<string> Orders { get; set; }
+    
 }

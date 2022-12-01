@@ -13,36 +13,36 @@
 			this.topings = TempToppings;
 
 			//derive price 
-			int temPrise = 0;
+			int temPrice = 0;
 
 			switch (Tempsize)//base cost
 			{
 				case sizeEnme.Small:
-					temPrise = 6;
+					temPrice = 6;
 					break;
 
 				case sizeEnme.Meddem:
-					temPrise = 8;
+					temPrice = 8;
 					break;
 
 				case sizeEnme.Large:
-					temPrise = 10;
+					temPrice = 10;
 					break;
 
 				case sizeEnme.XL:
-					temPrise = 12;
+					temPrice = 12;
 					break;
 
 				default:
 					break;
 			}
 
-			if (crust == CrustEnme.Stuffed) temPrise += 4;//extra for cost stuffed crust
+			if (crust == CrustEnme.Stuffed) temPrice += 4;//extra for cost stuffed crust
 
-			temPrise += topings.Length;//+1 per-topping
+			temPrice += topings.Length;//+1 per-topping
 
 
-			this.prise = temPrise;// apply price
+			this.price = temPrice;// apply price
 		}
 
 		public override string ReceiptInfo() // used as part of the recceipt.  
@@ -55,7 +55,7 @@
 			Olives"
 		 */
 		{
-			string temp = "Pizza: " + this.prise+"$ Size:";
+			string temp = "Pizza: " + this.price+"$ Size:";
 			if (size == sizeEnme.XL) temp = temp + " Extra Large"; //change XL means  Extra Large
 			else temp = temp + size;
 

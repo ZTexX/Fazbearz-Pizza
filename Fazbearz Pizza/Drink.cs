@@ -20,13 +20,13 @@ namespace Fazbearz_Pizza
             switch (size)
             {
                 case DrinkSize.Small:
-                    this.prise = 2;
+                    this.price = 2;
                     break;
                 case DrinkSize.Medium:
-                    this.prise = 3;
+                    this.price = 3;
                     break;
                 case DrinkSize.Large:
-                    this.prise = 4;
+                    this.price = 4;
                     break;
                 default:
                     break;
@@ -40,11 +40,11 @@ namespace Fazbearz_Pizza
             switch (Type) // Fix the Type Name
             {
                 case DrinkType.DrPepper:
-                    return "drink: Dr.Pepper Size:" + Size + " price: " + prise + "$" ;
+                    return "drink: Dr.Pepper Size:" + Size + " price: " + price + "$" ;
                 case DrinkType.MountainDew:
-                    return "drink: Mountain Dew Size:" + Size + " price: " + prise + "$";
+                    return "drink: Mountain Dew Size:" + Size + " price: " + price + "$";
                 default:
-                    return "drink: " + Type + " Size:" + Size + " price: " + prise + "$";
+                    return "drink: " + Type + " Size:" + Size + " price: " + price + "$";
             }
         }
     }

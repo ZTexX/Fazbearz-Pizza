@@ -802,7 +802,7 @@
             // 
             // label14
             // 
-            this.label14.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label14.Location = new System.Drawing.Point(1199, 242);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(259, 36);
@@ -844,7 +844,7 @@
             // 
             // label13
             // 
-            this.label13.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label13.Location = new System.Drawing.Point(853, 499);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(193, 36);
@@ -872,7 +872,7 @@
             // 
             // label11
             // 
-            this.label11.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label11.Location = new System.Drawing.Point(840, 242);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(193, 36);
@@ -930,7 +930,7 @@
             // 
             // label10
             // 
-            this.label10.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label10.Location = new System.Drawing.Point(597, 538);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(202, 58);
@@ -940,7 +940,7 @@
             // 
             // label9
             // 
-            this.label9.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label9.Location = new System.Drawing.Point(597, 400);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(193, 36);
@@ -979,7 +979,7 @@
             // 
             // label8
             // 
-            this.label8.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label8.Location = new System.Drawing.Point(597, 244);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(193, 36);
@@ -1098,7 +1098,7 @@
             // 
             // label22
             // 
-            this.label22.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label22.Location = new System.Drawing.Point(22, 76);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(198, 36);
@@ -1117,7 +1117,7 @@
             // 
             // label21
             // 
-            this.label21.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label21.Location = new System.Drawing.Point(22, 19);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(198, 36);
@@ -1181,7 +1181,7 @@
             // 
             // label17
             // 
-            this.label17.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label17.Location = new System.Drawing.Point(154, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(169, 36);
@@ -1209,7 +1209,7 @@
             // 
             // label18
             // 
-            this.label18.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label18.Location = new System.Drawing.Point(154, 36);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(212, 36);
@@ -1219,7 +1219,7 @@
             // 
             // label20
             // 
-            this.label20.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label20.Location = new System.Drawing.Point(154, 103);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(71, 36);
@@ -1229,7 +1229,7 @@
             // 
             // label19
             // 
-            this.label19.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label19.Location = new System.Drawing.Point(154, 67);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(145, 36);
@@ -1324,7 +1324,7 @@
             // 
             // label16
             // 
-            this.label16.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label16.Location = new System.Drawing.Point(745, 646);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(121, 36);
@@ -1431,7 +1431,7 @@
             // 
             // label25
             // 
-            this.label25.Font = new System.Drawing.Font("SF Pro Display", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label25.Location = new System.Drawing.Point(789, 242);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(259, 36);
