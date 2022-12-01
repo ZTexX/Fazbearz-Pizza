@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -136,10 +137,19 @@ namespace Fazbearz_Pizza
             if (validCustomerLogin)
             {
                 SwitchMenu(OrderMenuPanel);
+                model.StartNewOrder();
+                UsernameTxtBox.Text = "Username";
+                PasswordTxtBox.Text = "Password";
 
             }
             else if(model.IsManager)
+            {
                 SwitchMenu(ManagerDatabasePanel);
+                LoadFazeBase();
+                UsernameTxtBox.Text = "Username";
+                PasswordTxtBox.Text = "Password";
+            }
+               
             else
             {
                 //bounce
@@ -561,7 +571,8 @@ namespace Fazbearz_Pizza
             model.addItem(new Drink(drinktype, drinksize));
 
 
-            orderTxt = model.ReceiptInfo().Replace("\n", Environment.NewLine);
+            orderTxt = model.OrderInfo().Replace("\n", Environment.NewLine);
+            CurrentOrderTxtBox.Text = orderTxt;
             //--
         }
 
@@ -573,6 +584,15 @@ namespace Fazbearz_Pizza
         private void OrderHistoryBtn_Click(object sender, EventArgs e)
         {
             SwitchMenu(OrderHistoryPanel);
+            LoadOrderHistory();
+            
+            //this.Activated += CreateOrderButton()
+        }
+
+        private void BackBtn6_Click(object sender, EventArgs e)
+        {
+            SwitchMenu(LoginPanel);
+
         }
 
         //Order Menu END
@@ -583,6 +603,7 @@ namespace Fazbearz_Pizza
         private void BackBtn3_Click(object sender, EventArgs e)
         {
             SwitchMenu(OrderMenuPanel);
+
         }
         
         private void PaymentPanel_Click(object sender, EventArgs e)
@@ -594,7 +615,12 @@ namespace Fazbearz_Pizza
         {
             for (int i = 0; i < DeliveryOrPickup.Items.Count; i++)
             {
-                if (i != e.Index) DeliveryOrPickup.SetItemChecked(i, false);
+                if (i != e.Index)
+                {
+                    // if (i != e.Index) PaymentType.SetItemChecked(i, false);
+                    DeliveryOrPickup.SetItemChecked(i, false);
+                    model.currentOrder.isPickUp = (1 != i);
+                }
             }
         }
 
@@ -674,6 +700,10 @@ namespace Fazbearz_Pizza
 
             }
 
+            model.currentOrder.paymentType = (PaymentTypeEnum)PaymentType.CheckedIndices[0];
+            SwitchMenu(ReceiptPanel);
+            ReceiptTxtBox.Text = model.ReceiptInfo().Replace("\n",Environment.NewLine);
+            model.AddOrderToCustomer();
             //All Checks Done. Go to Receipt screen
         }
 
@@ -683,8 +713,6 @@ namespace Fazbearz_Pizza
             {
                 if (i != e.Index) PaymentType.SetItemChecked(i, false);
             }
-
-            
 
         }
 
@@ -706,8 +734,8 @@ namespace Fazbearz_Pizza
                     }
                 }
             }
-
-            string paymentType = PaymentType.CheckedItems[0].ToString();
+            string paymentType = "";
+            if (PaymentType.CheckedItems.Count != 0) paymentType = PaymentType.CheckedItems[0].ToString();
 
             if (paymentType == "Card")
             {
@@ -780,6 +808,8 @@ namespace Fazbearz_Pizza
         private void HomeBtn_Click(object sender, EventArgs e)
         {
             SwitchMenu(MainMenuPanel);
+            CurrentOrderTxtBox.Text = "";
+
         }
         //Receipt Menu END
         #endregion
@@ -789,6 +819,52 @@ namespace Fazbearz_Pizza
         private void BackBtn5_Click(object sender, EventArgs e)
         {
             SwitchMenu(MainMenuPanel);
+        }
+        private void CreateManagerButtons(int i)
+        {
+            System.Windows.Forms.Button newButton = new System.Windows.Forms.Button();
+            newButton.Text = "View Order History";
+            newButton.Size = new Size(150, 40);
+            newButton.Click += delegate (object sender, EventArgs e)
+            {
+                //load user
+                model.SetCurrentUser(model.GetDataBaseArray()[i]);
+
+
+                //open orderhistory
+                
+
+                LoadOrderHistory();
+                SwitchMenu(OrderHistoryPanel);
+            };
+            ManagerDataTable.Controls.Add(newButton, 4, ManagerDataTable.RowCount - 1);
+        }
+        private void LoadFazeBase()
+        {
+            while (ManagerDataTable.Controls.Count > 0)
+            {
+                ManagerDataTable.Controls[0].Dispose();
+            }
+            
+            int index = 0;
+            foreach (dataBaseObject s in model.GetDataBaseArray())
+            {
+               
+                ManagerDataTable.RowStyles.Add(new RowStyle(SizeType.Absolute));
+                ManagerDataTable.Controls.Add(new Label() { Text = s.customer.name+Environment.NewLine}, 0, ManagerDataTable.RowCount - 1);
+
+                ManagerDataTable.Controls.Add(new Label() { Text = s.customer.username }, 1, ManagerDataTable.RowCount - 1);
+
+                ManagerDataTable.Controls.Add(new Label() { Text = s.customer.address + " "+ s.customer.city+" " + s.customer.state + " " + s.customer.zipcode }, 2, ManagerDataTable.RowCount - 1);
+
+                ManagerDataTable.Controls.Add(new Label() { Text = s.customer.directions }, 3, ManagerDataTable.RowCount - 1);
+
+                CreateManagerButtons(index);
+                ManagerDataTable.RowCount++;
+                index++;
+            }
+            ManagerDataTable.RowCount--;
+
         }
         //Manager Database END
         #endregion
@@ -804,52 +880,48 @@ namespace Fazbearz_Pizza
             else
             {
                 SwitchMenu(OrderMenuPanel);
+                
             }
         }
 
-        private void PrintReceiptHistory(int id)
+
+
+        private void CreateOrderButtons(int i)
         {
-            MessageBox.Show(model.GetCustomerOrders()[id]);
+            System.Windows.Forms.Button newButton = new System.Windows.Forms.Button();
+            newButton.Text = "View Receipt";
+            newButton.Size = new Size(150, 40);
+            newButton.Tag = i;
+            newButton.Click += delegate (object sender, EventArgs e) { MessageBox.Show(model.GetCustomerOrders()[i]); };
+            OrderHistoryDataTable.Controls.Add(newButton,1, OrderHistoryDataTable.RowCount - 1);
         }
         private void LoadOrderHistory()
         {
-            string dateTime;
+            while (OrderHistoryDataTable.Controls.Count > 0)
+            {
+                OrderHistoryDataTable.Controls[0].Dispose();
+            }
+           
+            int index = 0;
             foreach(string s in model.GetCustomerOrders())
             {
-                dateTime = s.Split(":")[3];
-                //place box made here
-                //make button
+                string dateTime = s.Split(":")[1]+":"+s.Split(":")[2] + ":" + s.Split(":")[3] ;
+                OrderHistoryDataTable.RowStyles.Add(new RowStyle(SizeType.AutoSize)); //could add height
+                OrderHistoryDataTable.Controls.Add(new Label() { Text = dateTime },0,OrderHistoryDataTable.RowCount - 1);
+
+                CreateOrderButtons(index);
+                OrderHistoryDataTable.RowCount++;
+                index++;
+
             }
-            //here is where we do things and stuff, but like good things not bad things. This things are importat and not big dum. 
-            /*
-             
-           _MMMM_ 
-            |OO|
-            |- |
-         >--[=]]--<
-            |: |
-            |__|
-            [__]
-             l l
-             
-              ______
-             /      \
-            |   /\   |
-            |  /  \  |
-            | |    | |
-            | |    | |
-            | |    | |
-            | |    | |
-            |  \  /  |
-            |   \/   |
-             \______/
-              
-            0W0     we all hawe Dwemans
-            UwU     and swome Twimes
-            OwO     dey win
-             */
+            OrderHistoryDataTable.RowCount--;
         }
+
+
+
         //Order History Menu END
         #endregion
+
+        
     }
 }

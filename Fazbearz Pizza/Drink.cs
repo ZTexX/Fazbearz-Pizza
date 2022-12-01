@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Globalization;
 namespace Fazbearz_Pizza
 {
     internal class Drink: Item
@@ -20,13 +20,13 @@ namespace Fazbearz_Pizza
             switch (size)
             {
                 case DrinkSizeEnum.Small:
-                    this.price = 2;
+                    this.price = 1.99f;
                     break;
                 case DrinkSizeEnum.Medium:
-                    this.price = 3;
+                    this.price = 2.99f;
                     break;
                 case DrinkSizeEnum.Large:
-                    this.price = 4;
+                    this.price = 3.99f;
                     break;
                 default:
                     break;
@@ -34,27 +34,25 @@ namespace Fazbearz_Pizza
         }
         public override string ReceiptInfo() // used as part of the recceipt.
         /*
-         return Example: "drink: Coke Size: Small price: 2$"
+         return Example: "drink: Coke Size: Small price: $2"
          */
         {
-            switch (Type) // Fix the Type Name
-            {
-                case DrinkTypeEnum.DrPepper:
-                    return "drink: Dr.Pepper Size:" + Size + " price: " + price + "$" ;
-                case DrinkTypeEnum.MountainDew:
-                    return "drink: Mountain Dew Size:" + Size + " price: " + price + "$";
-                default:
-                    return "drink: " + Type + " Size:" + Size + " price: " + price + "$";
-            }
+            
+           return "Drink: " + Type + "\n  Size: " + Size + "\n  Price: " +Math.Round(price,2).ToString("C2", new CultureInfo("en-US"));
+           
         }
     }
     enum DrinkTypeEnum// represenst Tpye of a Drink
     {
-        DrPepper,   // Dr.Pepper
-        Coke,
-        MountainDew,//Mountain Dew
+        CocaCola,
+        CocaColaCherry,
         Sprite,
-        Monster
+        DrPepper,   
+        MountainDew,
+        FantaOrange,
+        MinuteMaidLemonade
+
+        
     }
     enum DrinkSizeEnum // represenst Size of a Drink
     {

@@ -13,33 +13,33 @@
 			this.topings = TempToppings;
 
 			//derive price 
-			int temPrice = 0;
+			float temPrice = 0;
 
 			switch (Tempsize)//base cost
 			{
 				case sizeEnme.Small:
-					temPrice = 6;
+					temPrice = 8.99f;
 					break;
 
 				case sizeEnme.Medium:
-					temPrice = 8;
+					temPrice = 12.99f;
 					break;
 
 				case sizeEnme.Large:
-					temPrice = 10;
+					temPrice = 15.99f;
 					break;
 
 				case sizeEnme.XL:
-					temPrice = 12;
+					temPrice = 19.99f;
 					break;
 
 				default:
 					break;
 			}
 
-			if (crust == CrustEnme.Stuffed) temPrice += 4;//extra for cost stuffed crust
+			if (crust == CrustEnme.Stuffed) temPrice += 3.99f;//extra for cost stuffed crust
 
-			temPrice += topings.Length;//+1 per-topping
+			temPrice += topings.Length*0.99f;//+1 per-topping
 
 
 			this.price = temPrice;// apply price
@@ -55,7 +55,7 @@
 			Olives"
 		 */
 		{
-			string temp = "Pizza: " + this.price+"$ Size:";
+			string temp = "Pizza: " + Math.Round(price,2).ToString("C2", new System.Globalization.CultureInfo("en-US")) + " Size: ";
 			if (size == sizeEnme.XL) temp = temp + " Extra Large"; //change XL means  Extra Large
 			else temp = temp + size;
 
@@ -94,8 +94,8 @@
 		Mushrooms,
 		Chicken,
 		Onions,
-		ExCheese,   //extra Cheese      
 		BananaPeppers, //BannaPeppers
+		ExCheese,   //extra Cheese  
 		Olives,           
 		Peppers,
 		Sausage,

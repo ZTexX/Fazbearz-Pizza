@@ -132,6 +132,7 @@ public class Database
         List<dataBaseObject> goal = new List<dataBaseObject>();
         foreach (string obj in objects)
         {
+            if (obj.Equals("")) continue;
             dataBaseObject temp2 = JsonSerializer.Deserialize<dataBaseObject>(obj)!;
             goal.Add(temp2);
         }

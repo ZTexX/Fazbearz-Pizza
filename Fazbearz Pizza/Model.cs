@@ -9,9 +9,9 @@ namespace Fazbearz_Pizza
     internal class Model
     {
         //vairable: currentorder, database, currentuser
-        private Order currentOrder;
+        public Order currentOrder {get; set;}
         private Database database = new Database();
-        private dataBaseObject currentUser;
+        private dataBaseObject currentUser {get; set;}
         public bool IsManager;
         private string managerUsername = "manager";
         private string managerPassword = "password";
@@ -51,6 +51,11 @@ namespace Fazbearz_Pizza
             currentUser = database.getDataObject(username, password);
         }
 
+        public void SetCurrentUser(dataBaseObject obj)
+        {
+            currentUser = obj;
+        }
+
 
         //getCustomerOrders()
         public string[] GetCustomerOrders()
@@ -63,6 +68,11 @@ namespace Fazbearz_Pizza
         {
             return database.GetTotalOrders(currentUser.customer.username, currentUser.customer.password);
  
+        }
+
+        public dataBaseObject[] GetDataBaseArray()
+        {
+            return database.getDataObjectArray();
         }
 
         //StartNewOrder()
@@ -88,6 +98,12 @@ namespace Fazbearz_Pizza
         public string ReceiptInfo()
         {
             return currentOrder.ReceiptInfo();
+        }
+
+
+        public string OrderInfo()
+        {
+            return currentOrder.OrderSlip();
         }
 
         //PrintReceipt()

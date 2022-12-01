@@ -67,6 +67,7 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.OrderMenuPanel = new System.Windows.Forms.Panel();
+            this.BackBtn6 = new System.Windows.Forms.Button();
             this.OrderHistoryBtn = new System.Windows.Forms.Button();
             this.CheckoutBtn = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
@@ -80,7 +81,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.CrustType = new System.Windows.Forms.CheckedListBox();
-            this.OrderNumLbl = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.PizzaSizes = new System.Windows.Forms.CheckedListBox();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -128,6 +128,11 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.ManagerDataTable = new System.Windows.Forms.TableLayoutPanel();
             this.ManagerEntries = new System.Windows.Forms.TableLayoutPanel();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
             this.pictureBox12 = new System.Windows.Forms.PictureBox();
             this.pictureBox11 = new System.Windows.Forms.PictureBox();
@@ -137,6 +142,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.OrderHistoryDataTable = new System.Windows.Forms.TableLayoutPanel();
             this.OrderHistoryEntries = new System.Windows.Forms.TableLayoutPanel();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.pictureBox14 = new System.Windows.Forms.PictureBox();
             this.pictureBox13 = new System.Windows.Forms.PictureBox();
@@ -165,10 +172,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
             this.ManagerDatabasePanel.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.ManagerEntries.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).BeginInit();
             this.OrderHistoryPanel.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.OrderHistoryEntries.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             this.SuspendLayout();
@@ -732,6 +741,7 @@
             // OrderMenuPanel
             // 
             this.OrderMenuPanel.BackColor = System.Drawing.Color.White;
+            this.OrderMenuPanel.Controls.Add(this.BackBtn6);
             this.OrderMenuPanel.Controls.Add(this.OrderHistoryBtn);
             this.OrderMenuPanel.Controls.Add(this.CheckoutBtn);
             this.OrderMenuPanel.Controls.Add(this.label14);
@@ -745,7 +755,6 @@
             this.OrderMenuPanel.Controls.Add(this.label10);
             this.OrderMenuPanel.Controls.Add(this.label9);
             this.OrderMenuPanel.Controls.Add(this.CrustType);
-            this.OrderMenuPanel.Controls.Add(this.OrderNumLbl);
             this.OrderMenuPanel.Controls.Add(this.label8);
             this.OrderMenuPanel.Controls.Add(this.PizzaSizes);
             this.OrderMenuPanel.Controls.Add(this.pictureBox6);
@@ -757,6 +766,24 @@
             this.OrderMenuPanel.Name = "OrderMenuPanel";
             this.OrderMenuPanel.Size = new System.Drawing.Size(1904, 1041);
             this.OrderMenuPanel.TabIndex = 21;
+            // 
+            // BackBtn6
+            // 
+            this.BackBtn6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(80)))), ((int)(((byte)(147)))));
+            this.BackBtn6.BackgroundImage = global::Fazbearz_Pizza.Properties.Resources.Arrow_Circle_Left;
+            this.BackBtn6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BackBtn6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BackBtn6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(80)))), ((int)(((byte)(147)))));
+            this.BackBtn6.FlatAppearance.BorderSize = 0;
+            this.BackBtn6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(80)))), ((int)(((byte)(147)))));
+            this.BackBtn6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(103)))), ((int)(((byte)(80)))), ((int)(((byte)(147)))));
+            this.BackBtn6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BackBtn6.Location = new System.Drawing.Point(21, 13);
+            this.BackBtn6.Name = "BackBtn6";
+            this.BackBtn6.Size = new System.Drawing.Size(46, 45);
+            this.BackBtn6.TabIndex = 26;
+            this.BackBtn6.UseVisualStyleBackColor = false;
+            this.BackBtn6.Click += new System.EventHandler(this.BackBtn6_Click);
             // 
             // OrderHistoryBtn
             // 
@@ -965,17 +992,6 @@
             this.CrustType.TabIndex = 12;
             this.CrustType.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.CrustType_ItemCheck);
             this.CrustType.Click += new System.EventHandler(this.CrustType_Click);
-            // 
-            // OrderNumLbl
-            // 
-            this.OrderNumLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.OrderNumLbl.Image = global::Fazbearz_Pizza.Properties.Resources.Hollow_Rect;
-            this.OrderNumLbl.Location = new System.Drawing.Point(454, 281);
-            this.OrderNumLbl.Name = "OrderNumLbl";
-            this.OrderNumLbl.Size = new System.Drawing.Size(137, 65);
-            this.OrderNumLbl.TabIndex = 11;
-            this.OrderNumLbl.Text = "Order #";
-            this.OrderNumLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label8
             // 
@@ -1542,41 +1558,16 @@
             this.ManagerDataTable.AutoScroll = true;
             this.ManagerDataTable.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ManagerDataTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.ManagerDataTable.ColumnCount = 6;
-            this.ManagerDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.ManagerDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
-            this.ManagerDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
-            this.ManagerDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
-            this.ManagerDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
-            this.ManagerDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
+            this.ManagerDataTable.ColumnCount = 5;
+            this.ManagerDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.ManagerDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.ManagerDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.ManagerDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.ManagerDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.ManagerDataTable.Dock = System.Windows.Forms.DockStyle.Top;
             this.ManagerDataTable.Location = new System.Drawing.Point(0, 44);
             this.ManagerDataTable.Name = "ManagerDataTable";
             this.ManagerDataTable.RowCount = 1;
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.ManagerDataTable.Size = new System.Drawing.Size(805, 357);
             this.ManagerDataTable.TabIndex = 1;
@@ -1587,13 +1578,17 @@
             this.ManagerEntries.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ManagerEntries.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(82)))), ((int)(((byte)(78)))));
             this.ManagerEntries.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.ManagerEntries.ColumnCount = 6;
-            this.ManagerEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.ManagerEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.ManagerEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.ManagerEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.ManagerEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.ManagerEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.ManagerEntries.ColumnCount = 5;
+            this.ManagerEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.ManagerEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.ManagerEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.ManagerEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.ManagerEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.ManagerEntries.Controls.Add(this.label36, 0, 0);
+            this.ManagerEntries.Controls.Add(this.label35, 0, 0);
+            this.ManagerEntries.Controls.Add(this.label34, 0, 0);
+            this.ManagerEntries.Controls.Add(this.label33, 0, 0);
+            this.ManagerEntries.Controls.Add(this.label32, 0, 0);
             this.ManagerEntries.Dock = System.Windows.Forms.DockStyle.Top;
             this.ManagerEntries.Location = new System.Drawing.Point(0, 0);
             this.ManagerEntries.Name = "ManagerEntries";
@@ -1601,6 +1596,66 @@
             this.ManagerEntries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.ManagerEntries.Size = new System.Drawing.Size(805, 44);
             this.ManagerEntries.TabIndex = 0;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label36.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label36.Location = new System.Drawing.Point(485, 2);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(152, 40);
+            this.label36.TabIndex = 5;
+            this.label36.Text = "Directions";
+            this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label35.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label35.Location = new System.Drawing.Point(645, 2);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(155, 40);
+            this.label35.TabIndex = 4;
+            this.label35.Text = "View Orders";
+            this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label34.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label34.Location = new System.Drawing.Point(325, 2);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(152, 40);
+            this.label34.TabIndex = 3;
+            this.label34.Text = "Address";
+            this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label33.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label33.Location = new System.Drawing.Point(5, 2);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(152, 40);
+            this.label33.TabIndex = 2;
+            this.label33.Text = "Name";
+            this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label32.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label32.Location = new System.Drawing.Point(165, 2);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(152, 40);
+            this.label32.TabIndex = 1;
+            this.label32.Text = "Username";
+            this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label27
             // 
@@ -1695,7 +1750,7 @@
             this.OrderHistoryDataTable.AutoScroll = true;
             this.OrderHistoryDataTable.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.OrderHistoryDataTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.OrderHistoryDataTable.ColumnCount = 6;
+            this.OrderHistoryDataTable.ColumnCount = 2;
             this.OrderHistoryDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
             this.OrderHistoryDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
             this.OrderHistoryDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
@@ -1716,13 +1771,11 @@
             this.OrderHistoryEntries.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.OrderHistoryEntries.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(82)))), ((int)(((byte)(78)))));
             this.OrderHistoryEntries.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Inset;
-            this.OrderHistoryEntries.ColumnCount = 6;
-            this.OrderHistoryEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.OrderHistoryEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.OrderHistoryEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.OrderHistoryEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.OrderHistoryEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.OrderHistoryEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.OrderHistoryEntries.ColumnCount = 2;
+            this.OrderHistoryEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.OrderHistoryEntries.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.OrderHistoryEntries.Controls.Add(this.label31, 0, 0);
+            this.OrderHistoryEntries.Controls.Add(this.label30, 0, 0);
             this.OrderHistoryEntries.Dock = System.Windows.Forms.DockStyle.Top;
             this.OrderHistoryEntries.Location = new System.Drawing.Point(0, 0);
             this.OrderHistoryEntries.Name = "OrderHistoryEntries";
@@ -1730,6 +1783,30 @@
             this.OrderHistoryEntries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.OrderHistoryEntries.Size = new System.Drawing.Size(805, 44);
             this.OrderHistoryEntries.TabIndex = 0;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label31.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label31.Location = new System.Drawing.Point(406, 2);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(394, 40);
+            this.label31.TabIndex = 1;
+            this.label31.Text = "View History";
+            this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label30.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label30.Location = new System.Drawing.Point(5, 2);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(393, 40);
+            this.label30.TabIndex = 0;
+            this.label30.Text = "Date/Time";
+            this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label29
             // 
@@ -1782,14 +1859,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.OrderHistoryPanel);
+            this.Controls.Add(this.MainMenuPanel);
             this.Controls.Add(this.ManagerDatabasePanel);
+            this.Controls.Add(this.OrderHistoryPanel);
             this.Controls.Add(this.OrderMenuPanel);
             this.Controls.Add(this.ReceiptPanel);
+            this.Controls.Add(this.PaymentPanel);
             this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.CreateAccountPanel);
-            this.Controls.Add(this.MainMenuPanel);
-            this.Controls.Add(this.PaymentPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -1829,11 +1906,15 @@
             this.ManagerDatabasePanel.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.ManagerEntries.ResumeLayout(false);
+            this.ManagerEntries.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox11)).EndInit();
             this.OrderHistoryPanel.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.OrderHistoryEntries.ResumeLayout(false);
+            this.OrderHistoryEntries.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             this.ResumeLayout(false);
@@ -1885,7 +1966,6 @@
         private Label label6;
         private Label label8;
         private CheckedListBox PizzaSizes;
-        private Label OrderNumLbl;
         private Label label9;
         private CheckedListBox CrustType;
         private CheckedListBox Toppings;
@@ -1953,5 +2033,13 @@
         private Button HomeBtn;
         private TableLayoutPanel ManagerDataTable;
         private TableLayoutPanel ManagerEntries;
+        private Button BackBtn6;
+        private Label label30;
+        private Label label36;
+        private Label label35;
+        private Label label34;
+        private Label label33;
+        private Label label32;
+        private Label label31;
     }
 }
