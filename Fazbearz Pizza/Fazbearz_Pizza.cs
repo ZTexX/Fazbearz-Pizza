@@ -19,8 +19,6 @@ namespace Fazbearz_Pizza
         private Panel[] panels;
         private int orderNum;
         private Model model;
-        private string managerUsername = "manager";
-        private string managerPassword = "password";
 
         public Fazbearz_Pizza()
         {
@@ -48,6 +46,7 @@ namespace Fazbearz_Pizza
             }
         }
 
+        #region MainMenu
         //Main Menu BEGIN
         private void LoginBtn_Click(object sender, EventArgs e)
         {
@@ -59,6 +58,9 @@ namespace Fazbearz_Pizza
             this.Close();
         }
         //Main Menu END
+        #endregion
+
+        #region Login
 
         //Log In Menu BEGIN
 
@@ -135,14 +137,13 @@ namespace Fazbearz_Pizza
             {
                 SwitchMenu(OrderMenuPanel);
 
-               // Random rnd = new Random();
-                //Add check to make sure order number is not in database
-                //orderNum = rnd.Next(100000, 1000000);
-                //OrderNumLbl.Text = "Order #  " + orderNum;
             }
-            else
+            else if(model.IsManager)
                 SwitchMenu(ManagerDatabasePanel);
-
+            else
+            {
+                //bounce
+            }
 
         }
 
@@ -150,12 +151,12 @@ namespace Fazbearz_Pizza
         {
             
 
-            if (UsernameTxtBox.Text.Equals("Username") ||username.Equals(managerUsername))
+            if (UsernameTxtBox.Text.Equals("Username"))
             {
                 UsernameTxtBox.Focus();
                 return false;
             }
-            else if (UsernameTxtBox.Text.Equals("Password") || password.Equals(managerPassword))
+            else if (UsernameTxtBox.Text.Equals("Password"))
             {
                 PasswordTxtBox.Focus();
                 return false;
@@ -163,7 +164,7 @@ namespace Fazbearz_Pizza
 
             model.Login(username, password);
 
-            if (model.LoginCheck() == true)
+            if (model.LoginCheck() == true && !model.IsManager)
             {
                 
                 return true;
@@ -178,6 +179,9 @@ namespace Fazbearz_Pizza
         }
         //Log In Menu END
 
+        #endregion
+
+        #region CreateAccount
         //Create Account Menu BEGIN
         private void BackBtn2_Click(Object sender, EventArgs e)
         {
@@ -379,7 +383,9 @@ namespace Fazbearz_Pizza
             return true;
         }
         //Create Account Menu END
+        #endregion
 
+        #region OrderMenu
         //Order Menu BEGIN
         private void PizzaSizes_ItemCheck(object sender, ItemCheckEventArgs e)
         {
@@ -526,91 +532,37 @@ namespace Fazbearz_Pizza
         //Maybe total price
         private void AddToOrderBtn_Click(object sender, EventArgs e)
         {
-            float totalPrice = 0;
-
+            
             if (PizzaSizes.CheckedItems.Count == 0 || CrustType.CheckedItems.Count == 0 || Toppings.CheckedItems.Count == 0) return;
 
             if ((Drinks.CheckedItems.Count != 0 && DrinkSize.CheckedItems.Count == 0) || (Drinks.CheckedItems.Count == 0 && DrinkSize.CheckedItems.Count != 0)) return;
 
+            //Sizes
+            sizeEnme size = (sizeEnme)PizzaSizes.CheckedIndices[0]; //get the pizza size based on the buttons postion and converts it to a sizeEnme
+            
+            //Crust
+            CrustEnme crust = (CrustEnme)CrustType.CheckedIndices[0];
 
-            orderTxt += "Order " + orderIncr + ": " + Environment.NewLine + Environment.NewLine;
+            //Toppings
+            List<TopingsEnme> toppings = new List<TopingsEnme>();
 
-            orderTxt += "Size: ";
-            for (int i = 0; i < PizzaSizes.Items.Count; i++)
+      
+            foreach (int i in Toppings.CheckedIndices)
             {
-                if (PizzaSizes.GetItemChecked(i))
-                {
-                    orderTxt += PizzaSizes.Items[i].ToString();
-                    string price = PizzaSizes.Items[i].ToString().Substring(PizzaSizes.Items[i].ToString().LastIndexOf('$') + 1);
-
-                    totalPrice += float.Parse(price, CultureInfo.InvariantCulture.NumberFormat);
-                }
+                toppings.Add((TopingsEnme)i);
             }
-            orderTxt += Environment.NewLine;
+           
+            model.addItem(new Pizza(size, crust, toppings.ToArray()));
+            
+            //Drinks
+            DrinkSizeEnum drinksize = (DrinkSizeEnum)DrinkSize.CheckedIndices[0];
+            DrinkTypeEnum drinktype = (DrinkTypeEnum)Drinks.CheckedIndices[0];
 
-            orderTxt += "Crust: ";
-            for (int i = 0; i < CrustType.Items.Count; i++)
-            {
-                if (CrustType.GetItemChecked(i))
-                {
-                    orderTxt += CrustType.Items[i].ToString();
-                    
-                    if (CrustType.Items[i].ToString().Contains('$'))
-                    {
-                        string price = CrustType.Items[i].ToString().Substring(CrustType.Items[i].ToString().LastIndexOf('$') + 1);
-                        
-                        totalPrice += float.Parse(price, CultureInfo.InvariantCulture.NumberFormat);
-                    }
-                }
-            }
-            orderTxt += Environment.NewLine;
+            model.addItem(new Drink(drinktype, drinksize));
 
-            orderTxt += "Toppings: ";
-            for (int i = 0; i < Toppings.Items.Count; i++)
-            {
-                if (Toppings.GetItemChecked(i))
-                {
-                    orderTxt += Toppings.Items[i].ToString();
 
-                    if (Toppings.CheckedItems[Toppings.CheckedItems.Count - 1].ToString() != Toppings.Items[i].ToString()) orderTxt += ", ";
-
-                    totalPrice += 0.99f;
-                }
-            }
-            orderTxt += Environment.NewLine;
-
-            orderTxt += "Drink: ";
-
-            for (int i = 0; i < Drinks.Items.Count; i++)
-            {
-                if (Drinks.GetItemChecked(i))
-                {
-                    orderTxt += Drinks.Items[i].ToString() + " ";
-                }
-            }
-
-            for (int i = 0; i < DrinkSize.Items.Count; i++)
-            {
-                if (DrinkSize.GetItemChecked(i))
-                {
-                    orderTxt += DrinkSize.Items[i].ToString() + " ";
-                    string price = DrinkSize.Items[i].ToString().Substring(DrinkSize.Items[i].ToString().LastIndexOf('$') + 1);
-
-                    totalPrice += float.Parse(price, CultureInfo.InvariantCulture.NumberFormat);
-                }
-            }
-            orderTxt += Environment.NewLine;
-
-            float tax = totalPrice * 0.06f;
-            orderTxt += "Tax: " + tax.ToString("c2") + Environment.NewLine;
-
-            totalPrice += tax;
-
-            orderTxt += "Total: " + totalPrice.ToString("c2") + Environment.NewLine + Environment.NewLine;
-
-            orderIncr++;
-
-            CurrentOrderTxtBox.Text = orderTxt;
+            orderTxt = model.ReceiptInfo().Replace("\n", Environment.NewLine);
+            //--
         }
 
         private void CheckoutBtn_Click(object sender, EventArgs e)
@@ -624,7 +576,9 @@ namespace Fazbearz_Pizza
         }
 
         //Order Menu END
+        #endregion
 
+        #region PaymentProcessing
         //Payment Processing Menu BEGIN
         private void BackBtn3_Click(object sender, EventArgs e)
         {
@@ -729,6 +683,9 @@ namespace Fazbearz_Pizza
             {
                 if (i != e.Index) PaymentType.SetItemChecked(i, false);
             }
+
+            
+
         }
 
         private void PaymentType_Click(object sender, EventArgs e)
@@ -816,25 +773,83 @@ namespace Fazbearz_Pizza
         }
         //Payment Processing Menu END
 
+        #endregion
+
+        #region ReceiptMenu
         //Receipt Menu BEGIN
         private void HomeBtn_Click(object sender, EventArgs e)
         {
             SwitchMenu(MainMenuPanel);
         }
         //Receipt Menu END
+        #endregion
 
+        #region ManagerDatabaseMenu
         //Manager Database BEGIN
         private void BackBtn5_Click(object sender, EventArgs e)
         {
             SwitchMenu(MainMenuPanel);
         }
         //Manager Database END
+        #endregion
 
+        #region OrderHistoryMenu
         //Order History Menu BEGIN
         private void BackBtn4_Click(object sender, EventArgs e)
         {
-            // Code Here
+            if(model.IsManager)
+            {
+                SwitchMenu(MainMenuPanel);
+            }
+            else
+            {
+                SwitchMenu(OrderMenuPanel);
+            }
+        }
+
+        private void PrintReceiptHistory(int id)
+        {
+            MessageBox.Show(model.GetCustomerOrders()[id]);
+        }
+        private void LoadOrderHistory()
+        {
+            string dateTime;
+            foreach(string s in model.GetCustomerOrders())
+            {
+                dateTime = s.Split(":")[3];
+                //place box made here
+                //make button
+            }
+            //here is where we do things and stuff, but like good things not bad things. This things are importat and not big dum. 
+            /*
+             
+           _MMMM_ 
+            |OO|
+            |- |
+         >--[=]]--<
+            |: |
+            |__|
+            [__]
+             l l
+             
+              ______
+             /      \
+            |   /\   |
+            |  /  \  |
+            | |    | |
+            | |    | |
+            | |    | |
+            | |    | |
+            |  \  /  |
+            |   \/   |
+             \______/
+              
+            0W0     we all hawe Dwemans
+            UwU     and swome Twimes
+            OwO     dey win
+             */
         }
         //Order History Menu END
+        #endregion
     }
 }

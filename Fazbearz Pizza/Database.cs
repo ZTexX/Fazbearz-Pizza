@@ -17,16 +17,17 @@ public class Database
     /// </summary>
     public Database()
     {
+        
         try
         {
             if (!File.Exists(fileName))
             {
-                File.Create(fileName);
+                CreateCustomerAccount(new Customer("example", "12345", "bob", "123 real street", "turn right at light", "Marietta", "GA", "30060"));
             }
         }
         catch (Exception e)
         {
-            Console.WriteLine(e.ToString());
+            MessageBox.Show(e.ToString());
         }
 
     }
@@ -153,6 +154,8 @@ public class Database
         foreach (string obj in objects)
         {
             if (obj != null) {
+
+                if (obj.Equals("")) continue;
                 dataBaseObject temp2 = JsonSerializer.Deserialize<dataBaseObject>(obj)!; 
                 if(temp2.customer.username == UserName && temp2.customer.password == password)
                 {
@@ -176,6 +179,11 @@ public class dataBaseObject
     public Customer customer { get; set; }
     public List<string> Orders { get; set; }
 
+    [JsonConstructor]
+    public dataBaseObject()
+    {
+        
+    }
     public dataBaseObject(Customer customer)
     {
         this.customer = customer;

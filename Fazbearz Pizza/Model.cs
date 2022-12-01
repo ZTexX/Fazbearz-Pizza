@@ -12,13 +12,26 @@ namespace Fazbearz_Pizza
         private Order currentOrder;
         private Database database = new Database();
         private dataBaseObject currentUser;
-        
+        public bool IsManager;
+        private string managerUsername = "manager";
+        private string managerPassword = "password";
         //functions:
         //Login()
 
         public void Login(string username, string password)
         {
-            currentUser = database.getDataObject(username, password);
+            if(username == managerUsername && password == managerPassword)
+            {
+                currentUser = null;
+                IsManager = true;
+            }
+            else
+            {
+                currentUser = database.getDataObject(username, password);
+                IsManager = false;
+            }
+                
+            
             
         }
 

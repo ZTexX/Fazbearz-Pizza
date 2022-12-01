@@ -21,7 +21,7 @@
 					temPrice = 6;
 					break;
 
-				case sizeEnme.Meddem:
+				case sizeEnme.Medium:
 					temPrice = 8;
 					break;
 
@@ -65,6 +65,7 @@
 				for (int i = 0; i < topings.Length; i++)
 				{
 					if (topings[i] == TopingsEnme.ExCheese) temp = temp + "\n   Extra Cheese";
+					else if (topings[i] == TopingsEnme.BananaPeppers) temp = temp + "\n   Banana Peppers";
 					else temp = temp + "\n   " + topings[i];
 				}
 			}
@@ -76,7 +77,7 @@
 	public enum sizeEnme // represenst Size of a pizza
 	{
 		Small,      
-		Meddem,     
+		Medium,     
 		Large,      
 		XL      //Extra Large
 	}
@@ -92,10 +93,13 @@
 		Pepperoni,
 		Mushrooms,
 		Chicken,
-		Anchovies,
+		Onions,
 		ExCheese,   //extra Cheese      
+		BananaPeppers, //BannaPeppers
 		Olives,           
-		pepeprs,
-		Saussage
+		Peppers,
+		Sausage,
+		Bacon,
+		Pinapple
 	}
 }

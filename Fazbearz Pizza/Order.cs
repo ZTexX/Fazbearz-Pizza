@@ -26,7 +26,7 @@ namespace Fazbearz_Pizza
         /*
          Example:
         "
-Date & Time:11/29/2022 5:28:55 PMOrder Number: 69420
+Date & Time:11/29/2022 5:28:55 PM: Order Number: 69420
  Pizza: 19$ Size: Extra Large
   Toppings- 
    Extra Cheese
@@ -43,8 +43,8 @@ Total:24.38$
             float Tax = (0.06f * subTotal);     // assuming a 6% sales tax
             float Total = Tax + subTotal;
 
-            return "Date & Time:"+date+ OrderSlip() +
-                "\nsubTotal:"+ subTotal + "$" +
+            return "Date & Time:"+date + ":" + OrderSlip() +
+                ";\nsubTotal:"+ subTotal + "$" +
                 "\nTax:" + Tax + "$" +
                 "\nTotal:" + Total+"$";
         }
@@ -62,9 +62,13 @@ Order Number: 69420
             "
              */
         {
-            string temp = "Order Number: "+ id;
             
-            foreach(Item item in items)
+            string temp = "Order Number: "+ id;
+
+            if (isPickUp) temp = temp + " Order Type: Pickup";
+            else temp = temp + " Order Type: Delivery";
+
+            foreach (Item item in items)
             {
                 temp = temp+"\n "+item.ReceiptInfo();
             }

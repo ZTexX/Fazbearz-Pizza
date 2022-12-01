@@ -8,9 +8,9 @@ namespace Fazbearz_Pizza
 {
     internal class Drink: Item
     {
-        private DrinkSize Size;
-        private DrinkType Type;
-        public Drink(DrinkType type, DrinkSize size)
+        private DrinkSizeEnum Size;
+        private DrinkTypeEnum Type;
+        public Drink(DrinkTypeEnum type, DrinkSizeEnum size)
         {
 
             this.Type = type;
@@ -19,13 +19,13 @@ namespace Fazbearz_Pizza
             //derive price 
             switch (size)
             {
-                case DrinkSize.Small:
+                case DrinkSizeEnum.Small:
                     this.price = 2;
                     break;
-                case DrinkSize.Medium:
+                case DrinkSizeEnum.Medium:
                     this.price = 3;
                     break;
-                case DrinkSize.Large:
+                case DrinkSizeEnum.Large:
                     this.price = 4;
                     break;
                 default:
@@ -39,16 +39,16 @@ namespace Fazbearz_Pizza
         {
             switch (Type) // Fix the Type Name
             {
-                case DrinkType.DrPepper:
+                case DrinkTypeEnum.DrPepper:
                     return "drink: Dr.Pepper Size:" + Size + " price: " + price + "$" ;
-                case DrinkType.MountainDew:
+                case DrinkTypeEnum.MountainDew:
                     return "drink: Mountain Dew Size:" + Size + " price: " + price + "$";
                 default:
                     return "drink: " + Type + " Size:" + Size + " price: " + price + "$";
             }
         }
     }
-    enum DrinkType// represenst Tpye of a Drink
+    enum DrinkTypeEnum// represenst Tpye of a Drink
     {
         DrPepper,   // Dr.Pepper
         Coke,
@@ -56,7 +56,7 @@ namespace Fazbearz_Pizza
         Sprite,
         Monster
     }
-    enum DrinkSize // represenst Size of a Drink
+    enum DrinkSizeEnum // represenst Size of a Drink
     {
         Small,
         Medium,

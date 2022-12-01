@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 
 public class Customer
 {
@@ -12,8 +13,11 @@ public class Customer
     public string username { get; set; }
     public string password { get; set; }
 
-
-
+    [JsonConstructor]
+    public Customer()
+    {
+        
+    }
     public Customer( string u, string p, string n, string a, string d, string c, string s, string z)
     {
         username = u;
