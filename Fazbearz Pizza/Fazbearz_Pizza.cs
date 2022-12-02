@@ -18,7 +18,6 @@ namespace Fazbearz_Pizza
     public partial class Fazbearz_Pizza : Form
     {
         private Panel[] panels;
-        private int orderNum;
         private Model model;
 
         public Fazbearz_Pizza()
@@ -33,6 +32,10 @@ namespace Fazbearz_Pizza
             SwitchMenu(MainMenuPanel);
         }
 
+        /// <summary>
+        /// Switches screens by taking in Panel name panel
+        /// </summary>
+        /// <param name="panel"></param>
         private void SwitchMenu(Panel panel)
         {
             foreach (Panel p in panels)
@@ -48,33 +51,52 @@ namespace Fazbearz_Pizza
         }
 
         #region MainMenu
-        //Main Menu BEGIN
+        
+        /// <summary>
+        /// Handles login button on the main menu that switches to login screen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LoginBtn_Click(object sender, EventArgs e)
         {
             SwitchMenu(LoginPanel);
         }
 
+        /// <summary>
+        /// Handles the exit button that closes the application
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ExitBtn_Click(Object sender, EventArgs e)
         {
             this.Close();
         }
-        //Main Menu END
+ 
         #endregion
 
         #region Login
 
-        //Log In Menu BEGIN
-
+        /// <summary>
+        /// Handles the back button that returns from login to main menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BackBtn_Click(Object sender, EventArgs e)
         {
             SwitchMenu(MainMenuPanel);
         }
 
+        /// <summary>
+        /// Handles the button that takes user to create an account
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CreateAccountBtn_Click(Object sender, EventArgs e)
         {
             SwitchMenu(CreateAccountPanel);
         }
 
+        
         private void UsernameTxtBox_Enter(Object sender, EventArgs e)
         {
             if (UsernameTxtBox.Text == "Username")
@@ -128,6 +150,12 @@ namespace Fazbearz_Pizza
             }
         }
 
+        /// <summary>
+        /// Handles the login button once username and password information are passed in. Checks to see if the username and password are valid. 
+        /// If they are valid, switches to order menu panel. If the username and password are for the manager, switches to the manager database panel.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ActualLoginBtn_Click(Object sender, EventArgs e)
         {
             string username = UsernameTxtBox.Text;
@@ -157,6 +185,13 @@ namespace Fazbearz_Pizza
 
         }
 
+        /// <summary>
+        /// Returns a true boolean and sets currrentUser if username and password match.
+        /// Otherwise returns false if username and password dont match or the user is a manager.
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         private bool LogIn(string username, string password)
         {
             
@@ -187,15 +222,28 @@ namespace Fazbearz_Pizza
                 
             
         }
-        //Log In Menu END
 
         #endregion
 
         #region CreateAccount
-        //Create Account Menu BEGIN
+
+        /// <summary>
+        /// Handles the back button that takes the user back to he login page.
+        /// Resets all text boxes.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BackBtn2_Click(Object sender, EventArgs e)
         {
             SwitchMenu(LoginPanel);
+            CreateUsername.Text = "Username";
+            CreatePassword.PasswordChar = '\0';
+            CreatePassword.Text = "Password";
+            CreateName.Text = "Name";
+            CreateAddress1.Text = "Address 1";
+            CreateAddress2.Text = "Address 2 / Delivery Instructions (Optional)";
+            CreateCity.Text = "City";
+            CreateZIP.Text = "ZIP";
         }
 
         private void CreateUsername_Enter(Object sender, EventArgs e)
@@ -336,7 +384,15 @@ namespace Fazbearz_Pizza
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
+        
 
+        /// <summary>
+        /// Button handler that executes when the user is finished creating an account.
+        /// Checks if all information is filled. If it is, a new account is created in the model with all passed in information. 
+        /// The panel is switched to the order menu panel and a new order is started in the model.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FinishedBtn_Click(object sender, EventArgs e)
         {
             if (checkFilled())
@@ -348,13 +404,15 @@ namespace Fazbearz_Pizza
 
                 SwitchMenu(OrderMenuPanel);
                 model.StartNewOrder();
-                //Random rnd = new Random();
-                //Add check to make sure order number is not in database
-                //orderNum = rnd.Next(100000, 1000000);
-                //OrderNumLbl.Text = "Order #  " + orderNum;
+   
             }
         }
 
+        /// <summary>
+        /// Returns true if all text fields are filled.
+        /// Else returns false.
+        /// </summary>
+        /// <returns></returns>
         private bool checkFilled()
         {
             if (CreateUsername.Text == "Username")
@@ -392,11 +450,11 @@ namespace Fazbearz_Pizza
 
             return true;
         }
-        //Create Account Menu END
+
         #endregion
 
         #region OrderMenu
-        //Order Menu BEGIN
+
         private void PizzaSizes_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             for (int i = 0; i < PizzaSizes.Items.Count; i++)
@@ -537,69 +595,99 @@ namespace Fazbearz_Pizza
             }
         }
 
-        private int orderIncr = 1;
         private string orderTxt = "";
-        //Maybe total price
+ 
+
+        /// <summary>
+        /// Adds nothing to order if no boxes are checked. Converts the checked boxes of sizes, crust, toppings, drinks, and drink sizes to enums. 
+        /// Either a pizza or a drink must be fully customized, or both a pizza and a drink must be fully customized to add to currentOrder in model.
+        /// Order info is passed to the orderTxt string and displayed on screen.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddToOrderBtn_Click(object sender, EventArgs e)
         {
-            
-            if (PizzaSizes.CheckedItems.Count == 0 || CrustType.CheckedItems.Count == 0 || Toppings.CheckedItems.Count == 0) return;
-
-            if ((Drinks.CheckedItems.Count != 0 && DrinkSize.CheckedItems.Count == 0) || (Drinks.CheckedItems.Count == 0 && DrinkSize.CheckedItems.Count != 0)) return;
-
-            //Sizes
-            sizeEnme size = (sizeEnme)PizzaSizes.CheckedIndices[0]; //get the pizza size based on the buttons postion and converts it to a sizeEnme
-            
-            //Crust
-            CrustEnme crust = (CrustEnme)CrustType.CheckedIndices[0];
-
-            //Toppings
-            List<TopingsEnme> toppings = new List<TopingsEnme>();
-
-      
-            foreach (int i in Toppings.CheckedIndices)
+            if (PizzaSizes.CheckedItems.Count == 0 || CrustType.CheckedItems.Count == 0 || Toppings.CheckedItems.Count == 0) { }
+            else
             {
-                toppings.Add((TopingsEnme)i);
+                //Sizes
+                sizeEnme size = (sizeEnme)PizzaSizes.CheckedIndices[0]; //get the pizza size based on the buttons postion and converts it to a sizeEnme
+
+                //Crust
+                CrustEnme crust = (CrustEnme)CrustType.CheckedIndices[0];
+
+                //Toppings
+                List<TopingsEnme> toppings = new List<TopingsEnme>();
+
+
+                foreach (int i in Toppings.CheckedIndices)
+                {
+                    toppings.Add((TopingsEnme)i);
+                }
+
+                model.addItem(new Pizza(size, crust, toppings.ToArray()));
+                orderTxt = model.OrderInfo().Replace("\n", Environment.NewLine);
+                CurrentOrderTxtBox.Text = orderTxt;
             }
-           
-            model.addItem(new Pizza(size, crust, toppings.ToArray()));
+
+            if ((DrinkSize.CheckedItems.Count == 0) || (Drinks.CheckedItems.Count == 0)) return;
+            else
+            {
+                //Drinks
+                DrinkSizeEnum drinksize = (DrinkSizeEnum)DrinkSize.CheckedIndices[0];
+                DrinkTypeEnum drinktype = (DrinkTypeEnum)Drinks.CheckedIndices[0];
+
+                model.addItem(new Drink(drinktype, drinksize));
+                orderTxt = model.OrderInfo().Replace("\n", Environment.NewLine);
+                CurrentOrderTxtBox.Text = orderTxt;
+            }
             
-            //Drinks
-            DrinkSizeEnum drinksize = (DrinkSizeEnum)DrinkSize.CheckedIndices[0];
-            DrinkTypeEnum drinktype = (DrinkTypeEnum)Drinks.CheckedIndices[0];
-
-            model.addItem(new Drink(drinktype, drinksize));
-
-
-            orderTxt = model.OrderInfo().Replace("\n", Environment.NewLine);
-            CurrentOrderTxtBox.Text = orderTxt;
-            //--
+            
+   
         }
 
+        /// <summary>
+        /// Handels the checkout button which switches Panel to payment panel.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CheckoutBtn_Click(object sender, EventArgs e)
         {
             if (CurrentOrderTxtBox.Text != string.Empty) SwitchMenu(PaymentPanel);
         }
 
+        /// <summary>
+        /// Handles the order history button which switches Panel to order history panel and LoadsOrderHistory().
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OrderHistoryBtn_Click(object sender, EventArgs e)
         {
             SwitchMenu(OrderHistoryPanel);
             LoadOrderHistory();
             
-            //this.Activated += CreateOrderButton()
         }
 
+        /// <summary>
+        /// Handles the back button which switches Panel to login panel.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BackBtn6_Click(object sender, EventArgs e)
         {
             SwitchMenu(LoginPanel);
 
         }
 
-        //Order Menu END
         #endregion
 
         #region PaymentProcessing
-        //Payment Processing Menu BEGIN
+
+        /// <summary>
+        /// Handles the back button which switches Panel back to order menu panel.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BackBtn3_Click(object sender, EventArgs e)
         {
             SwitchMenu(OrderMenuPanel);
@@ -644,6 +732,15 @@ namespace Fazbearz_Pizza
             }
         }
 
+        /// <summary>
+        /// Handles the done with payment button which returns if nothing is entered.
+        /// Sets currentOrder payment type based on the passed in enum.
+        /// Switches Panel to receipt Panel.
+        /// Adds ReceiptInfo() to receipt text box.
+        /// Adds the order to the current customer in the database.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DoneBtn_Click(object sender, EventArgs e)
         {
             if (PaymentType.CheckedItems.Count == 0) return;
@@ -704,7 +801,7 @@ namespace Fazbearz_Pizza
             SwitchMenu(ReceiptPanel);
             ReceiptTxtBox.Text = model.ReceiptInfo().Replace("\n",Environment.NewLine);
             model.AddOrderToCustomer();
-            //All Checks Done. Go to Receipt screen
+
         }
 
         private void PaymentType_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -799,23 +896,45 @@ namespace Fazbearz_Pizza
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
-        //Payment Processing Menu END
 
         #endregion
 
         #region ReceiptMenu
-        //Receipt Menu BEGIN
+
+        /// <summary>
+        /// Handles the home button which switches Panel to main menu panel.
+        /// Resets all input fields in the application.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HomeBtn_Click(object sender, EventArgs e)
         {
             SwitchMenu(MainMenuPanel);
             CurrentOrderTxtBox.Text = "";
 
+            /*
+            foreach (System.Windows.Forms.TextBox t in this.Controls.OfType<System.Windows.Forms.TextBox>())
+            {
+                
+                
+                    t.Text = "";
+
+                
+            }
+            foreach(CheckedListBox c in this.Controls.OfType<CheckedListBox>())
+            {
+              
+                
+                    c.Items.Clear();
+
+                
+            }
+            */
         }
-        //Receipt Menu END
         #endregion
 
         #region ManagerDatabaseMenu
-        //Manager Database BEGIN
+
         private void BackBtn5_Click(object sender, EventArgs e)
         {
             SwitchMenu(MainMenuPanel);
@@ -825,14 +944,9 @@ namespace Fazbearz_Pizza
             System.Windows.Forms.Button newButton = new System.Windows.Forms.Button();
             newButton.Text = "View Order History";
             newButton.Size = new Size(150, 40);
-            newButton.Click += delegate (object sender, EventArgs e)
-            {
-                //load user
+            newButton.Click += delegate (object? sender, EventArgs e) { 
+            
                 model.SetCurrentUser(model.GetDataBaseArray()[i]);
-
-
-                //open orderhistory
-                
 
                 LoadOrderHistory();
                 SwitchMenu(OrderHistoryPanel);
@@ -866,16 +980,16 @@ namespace Fazbearz_Pizza
             ManagerDataTable.RowCount--;
 
         }
-        //Manager Database END
+
         #endregion
 
         #region OrderHistoryMenu
-        //Order History Menu BEGIN
+ 
         private void BackBtn4_Click(object sender, EventArgs e)
         {
             if(model.IsManager)
             {
-                SwitchMenu(MainMenuPanel);
+                SwitchMenu(ManagerDatabasePanel);
             }
             else
             {
@@ -884,15 +998,13 @@ namespace Fazbearz_Pizza
             }
         }
 
-
-
         private void CreateOrderButtons(int i)
         {
             System.Windows.Forms.Button newButton = new System.Windows.Forms.Button();
             newButton.Text = "View Receipt";
             newButton.Size = new Size(150, 40);
             newButton.Tag = i;
-            newButton.Click += delegate (object sender, EventArgs e) { MessageBox.Show(model.GetCustomerOrders()[i]); };
+            newButton.Click += delegate (object? sender, EventArgs e) { MessageBox.Show(model.GetCustomerOrders()[i]); };
             OrderHistoryDataTable.Controls.Add(newButton,1, OrderHistoryDataTable.RowCount - 1);
         }
         private void LoadOrderHistory()
@@ -917,9 +1029,6 @@ namespace Fazbearz_Pizza
             OrderHistoryDataTable.RowCount--;
         }
 
-
-
-        //Order History Menu END
         #endregion
 
         

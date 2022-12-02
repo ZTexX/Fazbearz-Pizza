@@ -48,7 +48,7 @@ Total:24.38$
             temp = "Date & Time: "+date + ": " + OrderSlip() +
                 "\nSubTotal: "+ Math.Round(subTotal, 2).ToString("C2", new CultureInfo("en-US")) +
                 "\nTax: " + Math.Round(Tax, 2).ToString("C2", new CultureInfo("en-US")) +
-                "\nTotal: " + Math.Round(Total, 2).ToString("C2", new CultureInfo("en-US")) + " \npayment type: "+ paymentType;
+                "\nTotal: " + Math.Round(Total, 2).ToString("C2", new CultureInfo("en-US")) + " \nPayment type: "+ paymentType;
             if (isPickUp) temp = temp + " Order Type: Pickup";
             else temp = temp + " Order Type: Delivery";
             return temp;

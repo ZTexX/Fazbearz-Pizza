@@ -1859,10 +1859,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.OrderMenuPanel);
             this.Controls.Add(this.MainMenuPanel);
             this.Controls.Add(this.ManagerDatabasePanel);
             this.Controls.Add(this.OrderHistoryPanel);
-            this.Controls.Add(this.OrderMenuPanel);
             this.Controls.Add(this.ReceiptPanel);
             this.Controls.Add(this.PaymentPanel);
             this.Controls.Add(this.LoginPanel);
