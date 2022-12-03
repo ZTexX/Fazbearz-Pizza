@@ -26,10 +26,18 @@ namespace Fazbearz_Pizza
             model = new Model();
         }
 
+        /// <summary>
+        /// Loads all panels.
+        /// Starts application at main menu.
+        /// Sets tags of all input fields.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Fazbearz_Pizza_Load(object sender, EventArgs e)
         {
             panels = Controls.OfType<Panel>().ToArray();
             SwitchMenu(MainMenuPanel);
+            foreach (Control c in Controls) { SetTags(c); }
         }
 
         /// <summary>
@@ -236,14 +244,7 @@ namespace Fazbearz_Pizza
         private void BackBtn2_Click(Object sender, EventArgs e)
         {
             SwitchMenu(LoginPanel);
-            CreateUsername.Text = "Username";
-            CreatePassword.PasswordChar = '\0';
-            CreatePassword.Text = "Password";
-            CreateName.Text = "Name";
-            CreateAddress1.Text = "Address 1";
-            CreateAddress2.Text = "Address 2 / Delivery Instructions (Optional)";
-            CreateCity.Text = "City";
-            CreateZIP.Text = "ZIP";
+            foreach (Control c in Controls) { ClearControls(c); }
         }
 
         private void CreateUsername_Enter(Object sender, EventArgs e)
@@ -607,7 +608,7 @@ namespace Fazbearz_Pizza
         /// <param name="e"></param>
         private void AddToOrderBtn_Click(object sender, EventArgs e)
         {
-            if (PizzaSizes.CheckedItems.Count == 0 || CrustType.CheckedItems.Count == 0 || Toppings.CheckedItems.Count == 0) { }
+            if (PizzaSizes.CheckedItems.Count == 0 || CrustType.CheckedItems.Count == 0 ) { }
             else
             {
                 //Sizes
@@ -669,13 +670,14 @@ namespace Fazbearz_Pizza
         }
 
         /// <summary>
-        /// Handles the back button which switches Panel to login panel.
+        /// Handles the back button which switches order menu Panel to login panel.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void BackBtn6_Click(object sender, EventArgs e)
         {
             SwitchMenu(LoginPanel);
+            foreach (Control c in Controls) { ClearControls(c); }
 
         }
 
@@ -802,6 +804,7 @@ namespace Fazbearz_Pizza
             ReceiptTxtBox.Text = model.ReceiptInfo().Replace("\n",Environment.NewLine);
             model.AddOrderToCustomer();
 
+
         }
 
         private void PaymentType_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -910,35 +913,82 @@ namespace Fazbearz_Pizza
         private void HomeBtn_Click(object sender, EventArgs e)
         {
             SwitchMenu(MainMenuPanel);
-            CurrentOrderTxtBox.Text = "";
 
-            /*
-            foreach (System.Windows.Forms.TextBox t in this.Controls.OfType<System.Windows.Forms.TextBox>())
+            foreach(Control c in Controls) { ClearControls(c); }
+
+
+        }
+
+        private void PrintReceiptBtn(Object sender, EventArgs e)
+        {
+            model.PrintReceiptToPDF();
+        }
+
+        /// <summary>
+        /// Clears all Controls in the form.
+        /// </summary>
+        /// <param name="control"></param>
+        private void ClearControls(Control control)
+        {
+
+            foreach (var c in control.Controls)
             {
-                
-                
-                    t.Text = "";
+                if (c is System.Windows.Forms.TextBox)
+                {
+                    ((System.Windows.Forms.TextBox)c).Text = String.Empty;
+                    ((System.Windows.Forms.TextBox)c).Text = ((System.Windows.Forms.TextBox)c).Tag.ToString();
+                    ClearControls((System.Windows.Forms.TextBox)c);
+                }
 
+                if(c is CheckedListBox)
+                {
+                    for (int i = 0; i < ((CheckedListBox)c).Items.Count; i++)
+                    {
+                        //if (i != ((CheckedListBox)c).Index) 
+                            ((CheckedListBox)c).SetItemChecked(i, false);
+                    }
+                    
+                    ClearControls((CheckedListBox)c);
+                }
                 
             }
-            foreach(CheckedListBox c in this.Controls.OfType<CheckedListBox>())
-            {
-              
-                
-                    c.Items.Clear();
+        }
 
+        /// <summary>
+        /// Makes the tag of every Control equal its current text
+        /// </summary>
+        /// <param name="control"></param>
+        private void SetTags(Control control)
+        {
+
+            foreach (var c in control.Controls)
+            {
+                if (c is System.Windows.Forms.TextBox)
+                {
+                    ((System.Windows.Forms.TextBox)c).Tag = ((System.Windows.Forms.TextBox)c).Text;
+                    SetTags((System.Windows.Forms.TextBox)c);
+                }
                 
             }
-            */
         }
         #endregion
 
         #region ManagerDatabaseMenu
 
+        /// <summary>
+        /// Handles the back button which switches panel from manager database Panel to main menu panel.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BackBtn5_Click(object sender, EventArgs e)
         {
             SwitchMenu(MainMenuPanel);
         }
+
+        /// <summary>
+        /// Initializes all buttons to view orders on the manager database panel.
+        /// </summary>
+        /// <param name="i"></param>
         private void CreateManagerButtons(int i)
         {
             System.Windows.Forms.Button newButton = new System.Windows.Forms.Button();
@@ -953,6 +1003,11 @@ namespace Fazbearz_Pizza
             };
             ManagerDataTable.Controls.Add(newButton, 4, ManagerDataTable.RowCount - 1);
         }
+
+        /// <summary>
+        /// Initializes the manager database.
+        /// Calls CreateManagerButtons().
+        /// </summary>
         private void LoadFazeBase()
         {
             while (ManagerDataTable.Controls.Count > 0)
@@ -973,11 +1028,12 @@ namespace Fazbearz_Pizza
 
                 ManagerDataTable.Controls.Add(new Label() { Text = s.customer.directions }, 3, ManagerDataTable.RowCount - 1);
 
-                CreateManagerButtons(index);
+                //CreateManagerButtons(index);
                 ManagerDataTable.RowCount++;
                 index++;
             }
-            ManagerDataTable.RowCount--;
+            if(ManagerDataTable.RowCount > 0)
+                ManagerDataTable.RowCount--;
 
         }
 
@@ -985,6 +1041,13 @@ namespace Fazbearz_Pizza
 
         #region OrderHistoryMenu
  
+        /// <summary>
+        /// Handles the back button on the order history panel.
+        /// If the user is the manager, Panel switches to manager database panel.
+        /// If the user is a customer, Panel switches to the order menu panel.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BackBtn4_Click(object sender, EventArgs e)
         {
             if(model.IsManager)
@@ -998,6 +1061,11 @@ namespace Fazbearz_Pizza
             }
         }
 
+
+        /// <summary>
+        /// Initialized all buttons to view receipts on the order history panel.
+        /// </summary>
+        /// <param name="i"></param>
         private void CreateOrderButtons(int i)
         {
             System.Windows.Forms.Button newButton = new System.Windows.Forms.Button();
@@ -1007,6 +1075,10 @@ namespace Fazbearz_Pizza
             newButton.Click += delegate (object? sender, EventArgs e) { MessageBox.Show(model.GetCustomerOrders()[i]); };
             OrderHistoryDataTable.Controls.Add(newButton,1, OrderHistoryDataTable.RowCount - 1);
         }
+
+        /// <summary>
+        /// Initializes the order history panel, establishing the date/time column and the button column.
+        /// </summary>
         private void LoadOrderHistory()
         {
             while (OrderHistoryDataTable.Controls.Count > 0)
@@ -1026,7 +1098,8 @@ namespace Fazbearz_Pizza
                 index++;
 
             }
-            OrderHistoryDataTable.RowCount--;
+            if (model.GetCustomerOrders() != null && OrderHistoryDataTable.RowCount > 0) 
+                OrderHistoryDataTable.RowCount--;
         }
 
         #endregion

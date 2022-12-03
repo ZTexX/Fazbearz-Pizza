@@ -116,6 +116,7 @@
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
             this.ReceiptPanel = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.HomeBtn = new System.Windows.Forms.Button();
             this.label25 = new System.Windows.Forms.Label();
             this.ReceiptTxtBox = new System.Windows.Forms.TextBox();
@@ -1414,6 +1415,8 @@
             // 
             // ReceiptPanel
             // 
+            this.ReceiptPanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.ReceiptPanel.Controls.Add(this.button1);
             this.ReceiptPanel.Controls.Add(this.HomeBtn);
             this.ReceiptPanel.Controls.Add(this.label25);
             this.ReceiptPanel.Controls.Add(this.ReceiptTxtBox);
@@ -1426,6 +1429,27 @@
             this.ReceiptPanel.Name = "ReceiptPanel";
             this.ReceiptPanel.Size = new System.Drawing.Size(1904, 1041);
             this.ReceiptPanel.TabIndex = 8;
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::Fazbearz_Pizza.Properties.Resources.Button;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.button1.Location = new System.Drawing.Point(1146, 664);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(169, 72);
+            this.button1.TabIndex = 26;
+            this.button1.Text = "Print Receipt";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.PrintReceiptBtn);
             // 
             // HomeBtn
             // 
@@ -1514,6 +1538,7 @@
             // 
             // ManagerDatabasePanel
             // 
+            this.ManagerDatabasePanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ManagerDatabasePanel.Controls.Add(this.BackBtn5);
             this.ManagerDatabasePanel.Controls.Add(this.panel2);
             this.ManagerDatabasePanel.Controls.Add(this.label27);
@@ -1548,9 +1573,9 @@
             // 
             this.panel2.Controls.Add(this.ManagerDataTable);
             this.panel2.Controls.Add(this.ManagerEntries);
-            this.panel2.Location = new System.Drawing.Point(516, 269);
+            this.panel2.Location = new System.Drawing.Point(466, 208);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(805, 401);
+            this.panel2.Size = new System.Drawing.Size(923, 501);
             this.panel2.TabIndex = 9;
             // 
             // ManagerDataTable
@@ -1569,7 +1594,7 @@
             this.ManagerDataTable.Name = "ManagerDataTable";
             this.ManagerDataTable.RowCount = 1;
             this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.Size = new System.Drawing.Size(805, 357);
+            this.ManagerDataTable.Size = new System.Drawing.Size(923, 457);
             this.ManagerDataTable.TabIndex = 1;
             // 
             // ManagerEntries
@@ -1594,7 +1619,7 @@
             this.ManagerEntries.Name = "ManagerEntries";
             this.ManagerEntries.RowCount = 1;
             this.ManagerEntries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.ManagerEntries.Size = new System.Drawing.Size(805, 44);
+            this.ManagerEntries.Size = new System.Drawing.Size(923, 44);
             this.ManagerEntries.TabIndex = 0;
             // 
             // label36
@@ -1602,9 +1627,9 @@
             this.label36.AutoSize = true;
             this.label36.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label36.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label36.Location = new System.Drawing.Point(485, 2);
+            this.label36.Location = new System.Drawing.Point(557, 2);
             this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(152, 40);
+            this.label36.Size = new System.Drawing.Size(176, 40);
             this.label36.TabIndex = 5;
             this.label36.Text = "Directions";
             this.label36.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1614,9 +1639,9 @@
             this.label35.AutoSize = true;
             this.label35.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label35.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label35.Location = new System.Drawing.Point(645, 2);
+            this.label35.Location = new System.Drawing.Point(741, 2);
             this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(155, 40);
+            this.label35.Size = new System.Drawing.Size(177, 40);
             this.label35.TabIndex = 4;
             this.label35.Text = "View Orders";
             this.label35.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1626,9 +1651,9 @@
             this.label34.AutoSize = true;
             this.label34.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label34.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label34.Location = new System.Drawing.Point(325, 2);
+            this.label34.Location = new System.Drawing.Point(373, 2);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(152, 40);
+            this.label34.Size = new System.Drawing.Size(176, 40);
             this.label34.TabIndex = 3;
             this.label34.Text = "Address";
             this.label34.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1640,7 +1665,7 @@
             this.label33.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label33.Location = new System.Drawing.Point(5, 2);
             this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(152, 40);
+            this.label33.Size = new System.Drawing.Size(176, 40);
             this.label33.TabIndex = 2;
             this.label33.Text = "Name";
             this.label33.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1650,9 +1675,9 @@
             this.label32.AutoSize = true;
             this.label32.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label32.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label32.Location = new System.Drawing.Point(165, 2);
+            this.label32.Location = new System.Drawing.Point(189, 2);
             this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(152, 40);
+            this.label32.Size = new System.Drawing.Size(176, 40);
             this.label32.TabIndex = 1;
             this.label32.Text = "Username";
             this.label32.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1705,6 +1730,7 @@
             // 
             // OrderHistoryPanel
             // 
+            this.OrderHistoryPanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.OrderHistoryPanel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.OrderHistoryPanel.Controls.Add(this.BackBtn4);
             this.OrderHistoryPanel.Controls.Add(this.panel1);
@@ -1740,9 +1766,9 @@
             // 
             this.panel1.Controls.Add(this.OrderHistoryDataTable);
             this.panel1.Controls.Add(this.OrderHistoryEntries);
-            this.panel1.Location = new System.Drawing.Point(514, 242);
+            this.panel1.Location = new System.Drawing.Point(418, 208);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(805, 401);
+            this.panel1.Size = new System.Drawing.Size(991, 515);
             this.panel1.TabIndex = 8;
             // 
             // OrderHistoryDataTable
@@ -1762,7 +1788,7 @@
             this.OrderHistoryDataTable.Name = "OrderHistoryDataTable";
             this.OrderHistoryDataTable.RowCount = 1;
             this.OrderHistoryDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.OrderHistoryDataTable.Size = new System.Drawing.Size(805, 357);
+            this.OrderHistoryDataTable.Size = new System.Drawing.Size(991, 471);
             this.OrderHistoryDataTable.TabIndex = 1;
             // 
             // OrderHistoryEntries
@@ -1781,7 +1807,7 @@
             this.OrderHistoryEntries.Name = "OrderHistoryEntries";
             this.OrderHistoryEntries.RowCount = 1;
             this.OrderHistoryEntries.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.OrderHistoryEntries.Size = new System.Drawing.Size(805, 44);
+            this.OrderHistoryEntries.Size = new System.Drawing.Size(991, 44);
             this.OrderHistoryEntries.TabIndex = 0;
             // 
             // label31
@@ -1789,9 +1815,9 @@
             this.label31.AutoSize = true;
             this.label31.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label31.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label31.Location = new System.Drawing.Point(406, 2);
+            this.label31.Location = new System.Drawing.Point(499, 2);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(394, 40);
+            this.label31.Size = new System.Drawing.Size(487, 40);
             this.label31.TabIndex = 1;
             this.label31.Text = "View History";
             this.label31.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1803,7 +1829,7 @@
             this.label30.Font = new System.Drawing.Font("Segoe UI Semibold", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label30.Location = new System.Drawing.Point(5, 2);
             this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(393, 40);
+            this.label30.Size = new System.Drawing.Size(486, 40);
             this.label30.TabIndex = 0;
             this.label30.Text = "Date/Time";
             this.label30.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1859,11 +1885,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.OrderMenuPanel);
-            this.Controls.Add(this.MainMenuPanel);
-            this.Controls.Add(this.ManagerDatabasePanel);
-            this.Controls.Add(this.OrderHistoryPanel);
             this.Controls.Add(this.ReceiptPanel);
+            this.Controls.Add(this.MainMenuPanel);
+            this.Controls.Add(this.OrderHistoryPanel);
+            this.Controls.Add(this.ManagerDatabasePanel);
+            this.Controls.Add(this.OrderMenuPanel);
             this.Controls.Add(this.PaymentPanel);
             this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.CreateAccountPanel);
@@ -2041,5 +2067,6 @@
         private Label label33;
         private Label label32;
         private Label label31;
+        private Button button1;
     }
 }

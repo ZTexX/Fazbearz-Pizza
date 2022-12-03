@@ -32,13 +32,17 @@ namespace Fazbearz_Pizza
                     break;
             }
         }
-        public override string ReceiptInfo() // used as part of the recceipt.
+        ///<summary>
+        ///Retuns the relavant portion of the Receipt
+		///<summary>
         /*
          return Example: "drink: Coke Size: Small price: $2"
          */
+        public override string ReceiptInfo() // used as part of the receipt.
+        
         {
             
-           return "Drink: " + Type + "\n  Size: " + Size + "\n  Price: " +Math.Round(price,2).ToString("C2", new CultureInfo("en-US"));
+           return "Drink: " + Type + " " + Math.Round(price, 2).ToString("C2", new CultureInfo("en-US")) + "\n  Size: " + Size;
            
         }
     }

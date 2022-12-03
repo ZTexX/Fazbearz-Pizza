@@ -8,38 +8,48 @@ using System.Globalization;
 
 namespace Fazbearz_Pizza
 {
+    
     class Order : ObjectIDGenerator
     {
-        public long id;
+        
         public DateTime date;
         public bool isPickUp;
         public List<Item> items;
         public PaymentTypeEnum paymentType;
-        private bool firstTime = true;
         
+
+        ///<summary>
+        ///repesents an order
+        ///<summary>
         public Order()
         {
-            this.id = GetId(this, out bool firstTime);
             date = DateTime.Now;
             items = new List<Item>();
         }
 
-        public string ReceiptInfo() // used as part of the recceipt.  
+
+
+        ///<summary>
+        ///Retuns the relivent portion of the Receipt
+        ///
+		///<summary>
         /*
          Example:
-        "
-Date & Time:11/29/2022 5:28:55 PM: Order Number: 69420
- Pizza: 19$ Size: Extra Large
-  Toppings- 
-   Extra Cheese
-   pepeprs
-   Olives
- drink: Dr.Pepper Size:Large price: 4$
-subTotal:23$
-Tax:1.38$
-Total:24.38$
+                "
+        Date & Time:11/29/2022 5:28:55 PM: Order Number: 69420
+         Pizza: 19$ Size: Extra Large
+          Toppings- 
+           Extra Cheese
+           pepeprs
+           Olives
+         drink: Dr.Pepper Size:Large price: 4$
+        subTotal:23$
+        Tax:1.38$
+        Total:24.38$
         "
          */
+        public string ReceiptInfo() // used as part of the recceipt.  
+        
         {
             string temp;
             float subTotal = getPrice();
@@ -56,21 +66,24 @@ Total:24.38$
         }
 
 
+        ///<summary>
+        ///Retuns a summerised portion of the Receipt
+        ///<summary>
         /*
              Exmple:
             "
-Order Number: 69420
- Pizza: 19$ Size: Extra Large
-  Toppings- 
-   Extra Cheese
-   pepeprs
-   Olives
- drink: Dr.Pepper Size:Large price: 4$
+            Order Number: 69420
+             Pizza: 19$ Size: Extra Large
+              Toppings- 
+               Extra Cheese
+               pepeprs
+               Olives
+             drink: Dr.Pepper Size:Large price: 4$
             "
              */
-        public string OrderSlip() // used as part of the recceipt.  
+        public string OrderSlip() 
         {
-
+            
             string temp = "";
 
             foreach (Item item in items)
@@ -81,7 +94,11 @@ Order Number: 69420
             return temp;
         }
 
-        public float getPrice()// get the prices of the enter order
+
+        ///<summary>
+        ///Retuns the cost of an order
+		///<summary>
+        public float getPrice()
         {
             float temp =0;
             foreach(Item item in items)
@@ -90,14 +107,32 @@ Order Number: 69420
             }
             return temp;
         }
-        public void addItem(Item item) //adds the give Item to The Item list
+
+
+        ///<summary>
+        ///adds the give Item to The Item list
+		///<summary>
+        /// <param name="item"></param>
+        public void addItem(Item item)
         {
             items.Add(item);
         }
-        public void removeItem(int I)// removes the Item at the given index from the item list
+
+
+
+        ///<summary>
+        ///removes the Item at the given index from the item list
+        ///<summary>
+        /// <param name="I"></param>
+        public void removeItem(int I)
         {
             if (items.Count > I) items.RemoveAt(I);
         }
+
+
+        ///<summary>
+        ///Retuns the time and date the order was ordered as a string
+		///<summary>
         public string getDateTime()
         {
             return date.ToString();

@@ -6,6 +6,9 @@
 		private CrustEnme crust;
 		private TopingsEnme[] topings;
 
+		///<summary>
+		///Represents a Pizza in an order
+		///</summary>
 		public Pizza(sizeEnme Tempsize, CrustEnme TempCrust, TopingsEnme[] TempToppings)
 		{
 			this.size = Tempsize;
@@ -44,9 +47,11 @@
 
 			this.price = temPrice;// apply price
 		}
-
-		public override string ReceiptInfo() // used as part of the recceipt.  
-		/*
+        ///<summary>
+        ///Retuns the relivent portion of the Receipt
+        ///</summary>
+        ///
+        /*
 		 return Example:
 		 "Pizza: 19$ Size: Extra Large
 		   Toppings- 
@@ -54,6 +59,8 @@
 			pepeprs
 			Olives"
 		 */
+        public override string ReceiptInfo() // used as part of the recceipt.  
+		
 		{
 			string temp = "Pizza: " + Math.Round(price,2).ToString("C2", new System.Globalization.CultureInfo("en-US")) + " Size: ";
 			if (size == sizeEnme.XL) temp = temp + " Extra Large"; //change XL means  Extra Large

@@ -13,7 +13,7 @@ public class Customer
     public string username { get; set; }
     public string password { get; set; }
 
-    [JsonConstructor]
+    [JsonConstructor]/// used as part of json
     public Customer()
     {
         
@@ -23,33 +23,13 @@ public class Customer
         username = u;
         password = p;
         name = n;
-        address = a;
+        if (a.Equals("Address 2 / Delivery Instructions (Optional)"))
+            address = "";
+        else address = a;
         directions = d;
         city = c;
         state = s;
         zipcode = z;
 
-    }
-
-    public bool Login(string str)
-    {
-        if (str.Equals(password))
-        {
-            return true;
-        }
-        else
-            return false;
-    }
-
-    public string ReceiptInfo()
-    /*
-       Example:
-    name:bob
-    Address: address, city, state zipcode
-
-     */
-    {
-        return "name:" + name +
-               "\nAddress:" + address + ", " + city + ", " + state + " " + zipcode;
     }
 }
