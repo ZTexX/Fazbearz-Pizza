@@ -18,6 +18,7 @@ namespace Fazbearz_Pizza
         public bool IsManager;
         private string managerUsername = "manager";
         private string managerPassword = "password";
+        private string sig = "";
         
 
         /// <summary>
@@ -149,7 +150,18 @@ namespace Fazbearz_Pizza
         /// <returns></returns>
         public string ReceiptInfo()
         {
-            return "Username: " + currentUser.customer.username + " " + currentOrder.ReceiptInfo();
+            return "Name: " + currentUser.customer.name + " " + currentOrder.ReceiptInfo();
+        }
+
+        /// <summary>
+        /// Returns a string displaying the current username and all ReceiptInfo for the currentOrder.
+        /// Adds signature to the Receipt.
+        /// </summary>
+        /// <returns></returns>
+        public string ReceiptInfo(string signature)
+        {
+            sig = signature;
+            return "Name: " + currentUser.customer.name + " " + currentOrder.ReceiptInfo() + Environment.NewLine + "Signature: " + signature;
         }
 
         /// <summary>
@@ -169,7 +181,7 @@ namespace Fazbearz_Pizza
         public void PrintReceiptToPDF()
         {
             RichTextBox richTextBox = new RichTextBox();
-            richTextBox.Text = ReceiptInfo();
+            richTextBox.Text = ReceiptInfo(sig);
             string rtfFormattedReceipt = richTextBox.Rtf;
 
             ChromePdfRenderer renderer = new ChromePdfRenderer();

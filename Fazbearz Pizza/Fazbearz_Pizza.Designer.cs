@@ -1342,9 +1342,9 @@
             // label16
             // 
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(745, 646);
+            this.label16.Location = new System.Drawing.Point(720, 647);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(121, 36);
+            this.label16.Size = new System.Drawing.Size(135, 35);
             this.label16.TabIndex = 18;
             this.label16.Text = "Signature:";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1581,6 +1581,7 @@
             // ManagerDataTable
             // 
             this.ManagerDataTable.AutoScroll = true;
+            this.ManagerDataTable.AutoSize = true;
             this.ManagerDataTable.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ManagerDataTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.ManagerDataTable.ColumnCount = 5;
@@ -1593,8 +1594,8 @@
             this.ManagerDataTable.Location = new System.Drawing.Point(0, 44);
             this.ManagerDataTable.Name = "ManagerDataTable";
             this.ManagerDataTable.RowCount = 1;
-            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.ManagerDataTable.Size = new System.Drawing.Size(923, 457);
+            this.ManagerDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.ManagerDataTable.Size = new System.Drawing.Size(923, 2);
             this.ManagerDataTable.TabIndex = 1;
             // 
             // ManagerEntries
@@ -1774,21 +1775,18 @@
             // OrderHistoryDataTable
             // 
             this.OrderHistoryDataTable.AutoScroll = true;
+            this.OrderHistoryDataTable.AutoSize = true;
             this.OrderHistoryDataTable.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.OrderHistoryDataTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.OrderHistoryDataTable.ColumnCount = 2;
-            this.OrderHistoryDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
-            this.OrderHistoryDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
-            this.OrderHistoryDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
-            this.OrderHistoryDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
-            this.OrderHistoryDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
-            this.OrderHistoryDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.66666F));
+            this.OrderHistoryDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.00002F));
+            this.OrderHistoryDataTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.99999F));
             this.OrderHistoryDataTable.Dock = System.Windows.Forms.DockStyle.Top;
             this.OrderHistoryDataTable.Location = new System.Drawing.Point(0, 44);
             this.OrderHistoryDataTable.Name = "OrderHistoryDataTable";
             this.OrderHistoryDataTable.RowCount = 1;
-            this.OrderHistoryDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.OrderHistoryDataTable.Size = new System.Drawing.Size(991, 471);
+            this.OrderHistoryDataTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.OrderHistoryDataTable.Size = new System.Drawing.Size(991, 2);
             this.OrderHistoryDataTable.TabIndex = 1;
             // 
             // OrderHistoryEntries
@@ -1885,12 +1883,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.ReceiptPanel);
-            this.Controls.Add(this.MainMenuPanel);
+            this.Controls.Add(this.PaymentPanel);
             this.Controls.Add(this.OrderHistoryPanel);
             this.Controls.Add(this.ManagerDatabasePanel);
+            this.Controls.Add(this.ReceiptPanel);
+            this.Controls.Add(this.MainMenuPanel);
             this.Controls.Add(this.OrderMenuPanel);
-            this.Controls.Add(this.PaymentPanel);
             this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.CreateAccountPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;

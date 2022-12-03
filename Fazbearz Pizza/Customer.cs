@@ -23,10 +23,10 @@ public class Customer
         username = u;
         password = p;
         name = n;
-        if (a.Equals("Address 2 / Delivery Instructions (Optional)"))
-            address = "";
-        else address = a;
-        directions = d;
+        address = a;
+        if (d.Equals("Address 2 / Delivery Instructions (Optional)"))
+            directions = "";
+        else directions = d;
         city = c;
         state = s;
         zipcode = z;

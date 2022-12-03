@@ -9,8 +9,7 @@ using Fazbearz_Pizza;
 public class Database
 {
     private string fileName = System.Windows.Forms.Application.LocalUserAppDataPath + @"\fazbase.txt";
-    private static readonly JsonSerializerOptions _options =
-       new() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull };
+   
 
     /// <summary>
     /// Constructor that creates a new file if one does not exist and also catches other exceptions
@@ -22,7 +21,7 @@ public class Database
         {
             if (!File.Exists(fileName))
             {
-                CreateCustomerAccount(new Customer("example", "12345", "bob", "123 real street", "turn right at light", "Marietta", "GA", "30060"));
+                CreateCustomerAccount(new Customer("ExampleUsername", "12345", "Bob", "123 Real Street", "turn right at the light", "Marietta", "GA", "30060"));
             }
         }
         catch (Exception e)

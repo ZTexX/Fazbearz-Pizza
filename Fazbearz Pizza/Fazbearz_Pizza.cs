@@ -11,6 +11,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.Design;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Fazbearz_Pizza
@@ -399,8 +400,19 @@ namespace Fazbearz_Pizza
             if (checkFilled())
             {
                 //Add data to database
-                model.CreateAccount(CreateUsername.Text, CreatePassword.Text, CreateName.Text, CreateAddress1.Text,
-                    CreateAddress2.Text, CreateCity.Text, SelectState.Text, CreateZIP.Text);
+                foreach(dataBaseObject obj in model.GetDataBaseArray())
+                {
+                    if (obj.customer.username.Equals(CreateUsername.Text.Trim()))
+                    {
+                        CreateUsername.Text = string.Empty;
+                        CreateUsername.Focus();
+                        return;
+                    }
+
+                }
+                
+                model.CreateAccount(CreateUsername.Text.Trim(), CreatePassword.Text.Trim(), CreateName.Text.Trim(), CreateAddress1.Text.Trim(),
+                    CreateAddress2.Text.Trim(), CreateCity.Text.Trim(), SelectState.Text.Trim(), CreateZIP.Text.Trim());
 
 
                 SwitchMenu(OrderMenuPanel);
@@ -801,7 +813,7 @@ namespace Fazbearz_Pizza
 
             model.currentOrder.paymentType = (PaymentTypeEnum)PaymentType.CheckedIndices[0];
             SwitchMenu(ReceiptPanel);
-            ReceiptTxtBox.Text = model.ReceiptInfo().Replace("\n",Environment.NewLine);
+            ReceiptTxtBox.Text = model.ReceiptInfo(SignatureTxtBox.Text).Replace("\n", Environment.NewLine);
             model.AddOrderToCustomer();
 
 
@@ -1014,24 +1026,28 @@ namespace Fazbearz_Pizza
             {
                 ManagerDataTable.Controls[0].Dispose();
             }
+
             
             int index = 0;
             foreach (dataBaseObject s in model.GetDataBaseArray())
             {
-               
-                ManagerDataTable.RowStyles.Add(new RowStyle(SizeType.Absolute));
-                ManagerDataTable.Controls.Add(new Label() { Text = s.customer.name+Environment.NewLine}, 0, ManagerDataTable.RowCount - 1);
 
-                ManagerDataTable.Controls.Add(new Label() { Text = s.customer.username }, 1, ManagerDataTable.RowCount - 1);
+                ManagerDataTable.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+                
+                ManagerDataTable.Controls.Add(new Label() { Text = s.customer.name , Dock = DockStyle.Fill }, 0, ManagerDataTable.RowCount - 1);
 
-                ManagerDataTable.Controls.Add(new Label() { Text = s.customer.address + " "+ s.customer.city+" " + s.customer.state + " " + s.customer.zipcode }, 2, ManagerDataTable.RowCount - 1);
+                ManagerDataTable.Controls.Add(new Label() { Text = s.customer.username, Dock = DockStyle.Fill }, 1, ManagerDataTable.RowCount - 1);
 
-                ManagerDataTable.Controls.Add(new Label() { Text = s.customer.directions }, 3, ManagerDataTable.RowCount - 1);
+                ManagerDataTable.Controls.Add(new Label() { Text = s.customer.address + " "+ s.customer.city+" " + s.customer.state + " " + s.customer.zipcode, Dock = DockStyle.Fill }, 2, ManagerDataTable.RowCount - 1);
 
-                //CreateManagerButtons(index);
+                ManagerDataTable.Controls.Add(new Label() { Text = s.customer.directions, Dock = DockStyle.Fill }, 3, ManagerDataTable.RowCount - 1);
+
+                CreateManagerButtons(index);
                 ManagerDataTable.RowCount++;
                 index++;
             }
+
+            
             if(ManagerDataTable.RowCount > 0)
                 ManagerDataTable.RowCount--;
 
@@ -1091,7 +1107,7 @@ namespace Fazbearz_Pizza
             {
                 string dateTime = s.Split(":")[1]+":"+s.Split(":")[2] + ":" + s.Split(":")[3] ;
                 OrderHistoryDataTable.RowStyles.Add(new RowStyle(SizeType.AutoSize)); //could add height
-                OrderHistoryDataTable.Controls.Add(new Label() { Text = dateTime },0,OrderHistoryDataTable.RowCount - 1);
+                OrderHistoryDataTable.Controls.Add(new Label() { Text = dateTime , Dock = DockStyle.Fill},0,OrderHistoryDataTable.RowCount - 1);
 
                 CreateOrderButtons(index);
                 OrderHistoryDataTable.RowCount++;
